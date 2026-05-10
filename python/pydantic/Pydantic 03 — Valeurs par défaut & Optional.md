@@ -1,4 +1,4 @@
-#pydantic #optional #default #champs
+#python #pydantic #optional #default #champs
 
 ## Champ obligatoire vs facultatif
 

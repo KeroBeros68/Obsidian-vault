@@ -1,4 +1,4 @@
-#pydantic #config #configdict #comportement
+#python #pydantic #config #configdict #comportement
 
 ## Syntaxe
 

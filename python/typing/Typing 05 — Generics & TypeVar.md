@@ -2,7 +2,6 @@
 
 ## TypeVar — paramètre de type
 
-python
 
 ```python
 from typing import TypeVar
@@ -19,7 +18,6 @@ s: str = identity("hi")   # T = str
 
 ## TypeVar avec contraintes
 
-python
 
 ```python
 from typing import TypeVar
@@ -37,7 +35,6 @@ double("hi")  # ❌ mypy : Value of type variable "Numeric" cannot be "str"
 
 ## TypeVar avec bound — sous-type de
 
-python
 
 ```python
 from typing import TypeVar
@@ -59,7 +56,6 @@ dog: Dog = make_speak(Dog())   # ✅ retourne Dog, pas juste Animal
 
 ## Classes génériques (Python 3.9+)
 
-python
 
 ```python
 from typing import Generic, TypeVar
@@ -87,7 +83,6 @@ value: int = stack.pop()   # ✅ mypy sait que c'est un int
 
 ## Plusieurs TypeVars
 
-python
 
 ```python
 from typing import TypeVar, Generic
@@ -109,7 +104,6 @@ swapped: Pair[int, str] = p.swap()
 
 ## TypeVarTuple — Generics variadiques (3.11+)
 
-python
 
 ```python
 from typing import TypeVarTuple, Unpack

@@ -1,8 +1,7 @@
-#pandas #nan #nettoyage #missing-values
+#python #pandas #nan #nettoyage #missing-values
 
 ## Détecter les NaN
 
-python
 
 ```python
 df.isnull()                        # DataFrame de True/False
@@ -13,7 +12,6 @@ df.isnull().any()                  # au moins 1 NaN par colonne
 
 ## Supprimer les NaN — dropna
 
-python
 
 ```python
 df.dropna()                     # toute ligne avec ≥1 NaN
@@ -25,7 +23,6 @@ df.dropna(thresh=2)             # garde si ≥2 valeurs non-NaN
 
 ## Remplir les NaN — fillna
 
-python
 
 ```python
 df.fillna(0)
@@ -40,7 +37,6 @@ df.fillna({"age": df["age"].median(), "ville": "Inconnu"})
 
 ## Doublons
 
-python
 
 ```python
 df.duplicated().sum()
@@ -51,7 +47,6 @@ df.drop_duplicates(keep="last")
 
 ## Convertir les types
 
-python
 
 ```python
 df["age"]  = df["age"].astype(int)
@@ -61,7 +56,6 @@ df["age"]  = pd.to_numeric(df["age"], errors="coerce")  # NaN si impossible
 
 ## Nettoyer le texte
 
-python
 
 ```python
 df["nom"].str.strip()          # espaces
@@ -71,7 +65,6 @@ df["nom"].str.replace("-"," ") # remplacer
 
 ## Après nettoyage
 
-python
 
 ```python
 df = df.dropna().reset_index(drop=True)  # toujours reset_index !

@@ -9,7 +9,6 @@ Les annotations de type sont **optionnelles** en Python (le langage reste dynami
 - Documentation vivante du code
 - Interopérabilité avec Pydantic, FastAPI, dataclasses...
 
-python
 
 ```python
 # Sans annotations — Python accepte, l'IDE ne sait rien
@@ -26,7 +25,6 @@ add("x", "y") # ❌ mypy : Argument 1 has incompatible type "str"; expected "int
 
 ## Syntaxe de base — variables
 
-python
 
 ```python
 # Annotation de variable (PEP 526 — Python 3.6+)
@@ -41,7 +39,6 @@ x: int   # valide Python — x n'existe pas encore
 
 ## Annotations de fonction
 
-python
 
 ```python
 def greet(name: str) -> str:
@@ -56,7 +53,6 @@ def nothing() -> None:                  # pas de retour
 
 ## Les annotations sont des métadonnées
 
-python
 
 ```python
 # Inspecter les annotations au runtime

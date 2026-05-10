@@ -1,4 +1,4 @@
-#numpy #random #performance #vectorisation
+#python #numpy #random #performance #vectorisation
 
 ## Générateur moderne (recommandé)
 

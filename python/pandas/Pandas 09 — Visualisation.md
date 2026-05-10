@@ -1,8 +1,7 @@
-#pandas #matplotlib #seaborn #visualisation #graphiques
+#python #pandas #matplotlib #seaborn #visualisation #graphiques
 
 ## Pandas plot — syntaxe de base
 
-python
 
 ```python
 import matplotlib.pyplot as plt
@@ -35,7 +34,6 @@ plt.show()
 
 ## Seaborn — graphiques statistiques
 
-python
 
 ```python
 import seaborn as sns
@@ -50,7 +48,6 @@ sns.pairplot(df, hue="ville")
 
 ## Plusieurs graphiques — subplots
 
-python
 
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))

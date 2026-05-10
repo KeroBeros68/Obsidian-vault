@@ -1,4 +1,4 @@
-#numpy #indexation #slicing
+#python #numpy #indexation #slicing
 
 ## Indexation 1D
 

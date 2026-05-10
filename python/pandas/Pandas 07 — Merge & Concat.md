@@ -1,8 +1,7 @@
-#pandas #merge #concat #join #sql
+#python #pandas #merge #concat #join #sql
 
 ## concat — empiler des DataFrames
 
-python
 
 ```python
 pd.concat([df1, df2], ignore_index=True)   # vertical (lignes)
@@ -13,7 +12,6 @@ pd.concat([df1, df2], axis=1)              # horizontal (colonnes)
 
 ## merge — jointure sur une clé
 
-python
 
 ```python
 pd.merge(clients, commandes, left_on="id", right_on="id_client")
@@ -29,7 +27,6 @@ pd.merge(df1, df2, on="id")               # même nom de clé
 |`right`|tout à droite + NaN à gauche|
 |`outer`|tout + NaN partout|
 
-python
 
 ```python
 pd.merge(df1, df2, on="id", how="left")
@@ -39,7 +36,6 @@ pd.merge(df1, df2, on="id", how="left")
 
 ## Colonnes dupliquées — suffixes
 
-python
 
 ```python
 pd.merge(df1, df2, on="id")
@@ -51,7 +47,6 @@ pd.merge(df1, df2, on="id", suffixes=("_2023","_2024"))
 
 ## join — jointure sur l'index
 
-python
 
 ```python
 df1.join(df2)   # plus rapide si l'index est déjà la clé

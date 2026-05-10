@@ -1,8 +1,7 @@
-#pandas #performance #optimisation #mémoire #vectorisation
+#python #pandas #performance #optimisation #mémoire #vectorisation
 
 ## Règle d'or — ne jamais itérer
 
-python
 
 ```python
 # ❌ Très lent
@@ -25,7 +24,6 @@ iterrows             →  à bannir absolument
 
 ## Optimiser la mémoire — dtypes
 
-python
 
 ```python
 df["age"]     = df["age"].astype(np.int16)
@@ -37,7 +35,6 @@ df["ville"]   = df["ville"].astype("category")  # si peu de valeurs uniques
 
 ## Chaînage de méthodes
 
-python
 
 ```python
 result = (df
@@ -51,7 +48,6 @@ result = (df
 
 ## Lire efficacement
 
-python
 
 ```python
 pd.read_csv("data.csv",

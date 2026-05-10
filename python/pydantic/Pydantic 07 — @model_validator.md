@@ -1,4 +1,4 @@
-#pydantic #model_validator #validation #cross-field
+#python #pydantic #model_validator #validation #cross-field
 
 ## mode="after" — accès à l'objet complet
 

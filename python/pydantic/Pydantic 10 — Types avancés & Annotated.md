@@ -1,4 +1,4 @@
-#pydantic #annotated #types #literal #union
+#python #pydantic #annotated #types #literal #union
 
 ## Annotated — types réutilisables
 

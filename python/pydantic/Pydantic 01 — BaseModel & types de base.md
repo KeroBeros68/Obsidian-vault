@@ -1,4 +1,4 @@
-#pydantic #basemodel #validation #bases
+#python #pydantic #basemodel #validation #bases
 
 ## Import
 

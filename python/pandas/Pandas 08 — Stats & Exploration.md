@@ -1,8 +1,7 @@
-#pandas #eda #statistiques #exploration #corrélation
+#python #pandas #eda #statistiques #exploration #corrélation
 
 ## Séquence EDA systématique
 
-python
 
 ```python
 df.shape
@@ -15,7 +14,6 @@ df.isnull().sum()
 
 ## describe — stats descriptives
 
-python
 
 ```python
 df.describe()          # colonnes numériques
@@ -26,7 +24,6 @@ Lignes : count, mean, std, min, 25%, **50% (médiane)**, 75%, max
 
 ## Corrélations
 
-python
 
 ```python
 df.corr()                        # matrice de corrélation
@@ -40,7 +37,6 @@ df["age"].corr(df["salaire"])    # entre deux colonnes
 
 ## Détecter les outliers — méthode IQR
 
-python
 
 ```python
 Q1  = df["col"].quantile(0.25)
@@ -53,7 +49,6 @@ outliers = df[(df["col"] < borne_inf) | (df["col"] > borne_sup)]
 
 ## Fonctions utiles
 
-python
 
 ```python
 df["col"].nunique()         # nb valeurs distinctes
@@ -67,7 +62,6 @@ df.sample(100, random_state=42)  # échantillon reproductible
 
 ## crosstab — tableau de contingence
 
-python
 
 ```python
 pd.crosstab(df["ville"], df["senior"])

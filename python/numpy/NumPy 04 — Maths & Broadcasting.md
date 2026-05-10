@@ -1,4 +1,4 @@
-#numpy #broadcasting #maths #ufunc
+#python #numpy #broadcasting #maths #ufunc
 
 ## Opérations élément par élément
 

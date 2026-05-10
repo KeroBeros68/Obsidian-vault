@@ -1,4 +1,4 @@
-#pydantic #custom-types #annotated #validator
+#python #pydantic #custom-types #annotated #validator
 
 ## Approche 1 — Annotated + AfterValidator / BeforeValidator
 

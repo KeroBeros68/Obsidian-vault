@@ -1,4 +1,4 @@
-#numpy #reshape #concatenate #stack
+#python #numpy #reshape #concatenate #stack
 
 ## Aplatir
 

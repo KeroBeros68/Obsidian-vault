@@ -1,4 +1,4 @@
-#numpy #agrégations #statistiques #axis
+#python #numpy #agrégations #statistiques #axis
 
 ## Fonctions de base
 

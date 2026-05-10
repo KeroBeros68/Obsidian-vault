@@ -1,8 +1,7 @@
-#pandas #csv #excel #import #export
+#python #pandas #csv #excel #import #export
 
 ## Lire un CSV
 
-python
 
 ```python
 df = pd.read_csv("data.csv")
@@ -25,7 +24,6 @@ df = pd.read_csv(
 
 ## Autres formats
 
-python
 
 ```python
 pd.read_excel("data.xlsx", sheet_name="Feuil1")
@@ -36,7 +34,6 @@ pd.read_sql("SELECT * FROM table", conn)
 
 ## Exporter
 
-python
 
 ```python
 df.to_csv("output.csv", index=False)     # ← toujours index=False !
@@ -49,7 +46,6 @@ df.to_json("output.json")
 
 ## Réflexe post-import
 
-python
 
 ```python
 df.shape
@@ -61,7 +57,6 @@ df.isnull().sum()
 
 ## Gros fichiers
 
-python
 
 ```python
 # Lire par morceaux

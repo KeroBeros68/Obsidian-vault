@@ -1,4 +1,4 @@
-#pydantic #fastapi #api #rest #openapi
+#python #pydantic #fastapi #api #rest #openapi
 
 ## Body — valider le corps d'une requête
 

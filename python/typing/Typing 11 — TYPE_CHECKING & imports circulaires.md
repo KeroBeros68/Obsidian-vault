@@ -2,7 +2,6 @@
 
 ## Le problème — import circulaire
 
-python
 
 ```python
 # users.py
@@ -14,7 +13,6 @@ from users import User     # ← importe users → import circulaire !
 
 ## Solution — TYPE_CHECKING
 
-python
 
 ```python
 # users.py
@@ -31,7 +29,6 @@ class User:
 
 ## from **future** import annotations
 
-python
 
 ```python
 # PEP 563 — toutes les annotations sont des chaînes évaluées lazily
@@ -46,7 +43,6 @@ class Node:
 
 ## Forward reference — guillemets
 
-python
 
 ```python
 # Sans __future__ : citer le type en string pour les références en avant
@@ -65,7 +61,6 @@ class Tree:
 
 ## TYPE_CHECKING — pattern complet
 
-python
 
 ```python
 from __future__ import annotations
@@ -83,7 +78,6 @@ class MyService:
 
 ## typing.get_type_hints() — résoudre les forward refs
 
-python
 
 ```python
 import typing

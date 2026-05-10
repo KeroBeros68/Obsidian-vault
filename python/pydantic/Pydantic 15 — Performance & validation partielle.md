@@ -1,4 +1,4 @@
-#pydantic #performance #optimisation #partiel
+#python #pydantic #performance #optimisation #partiel
 
 ## model_construct — bypasser la validation
 

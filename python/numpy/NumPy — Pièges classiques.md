@@ -1,10 +1,9 @@
-#numpy #pièges #erreurs #debugging
+#python #numpy #pièges #erreurs #debugging
 
 ## 🪤 Piège 1 — stop toujours exclu
 
 `arange`, `linspace` et le slicing excluent tous la borne `stop`.
 
-python
 
 ```python
 np.arange(1, 10, 3)   # [1 4 7]  — le 10 est EXCLU
@@ -17,7 +16,6 @@ a[1:4]                # indices 1, 2, 3  — le 4 est EXCLU
 
 ## 🪤 Piège 2 — slice retourne une vue, pas une copie
 
-python
 
 ```python
 a = np.array([1, 2, 3, 4, 5])
@@ -37,7 +35,6 @@ b = a[1:4].copy()
 
 L'erreur la plus fréquente sur les agrégations 2D.
 
-python
 
 ```python
 m = np.array([[1, 2, 3],
@@ -53,7 +50,6 @@ np.sum(m, axis=1)   # [6 15]   — somme par LIGNE   (traverse →)
 
 ## 🪤 Piège 4 — `*` vs `@` pour les matrices
 
-python
 
 ```python
 a = np.array([[1, 2], [3, 4]])
@@ -69,7 +65,6 @@ a @ b   # [[4, 6], [10, 12]]  ← produit MATRICIEL
 
 ## 🪤 Piège 5 — upcasting silencieux
 
-python
 
 ```python
 a = np.array([1, 2, 3])         # int64
@@ -84,7 +79,6 @@ d = (c + 1.5)                   # → float64, plus int32 !
 
 ## 🪤 Piège 6 — parenthèses obligatoires dans les masques
 
-python
 
 ```python
 a[(a > 2) & (a < 7)]   # ✅ correct
@@ -97,7 +91,6 @@ a[a > 2 & a < 7]       # ❌ erreur — & a une priorité plus haute que >
 
 ## 🪤 Piège 7 — reshape échoue si le total ne correspond pas
 
-python
 
 ```python
 a = np.arange(12)
@@ -112,7 +105,6 @@ a.reshape(3, -1)  # ✅ NumPy calcule : 12/3 = 4
 
 ## 🪤 Piège 8 — broadcasting : le `1` est compatible, pas les autres
 
-python
 
 ```python
 # shape (2, 3) + shape (2, 1) → ✅  le 1 est étiré à 3
@@ -129,7 +121,6 @@ python
 
 ## 🪤 Piège 9 — `np.sum` sur un booléen compte les True
 
-python
 
 ```python
 a = np.array([1, 5, 3, 8, 2])
@@ -143,7 +134,6 @@ C'est un **pattern voulu**, pas un bug — mais surprenant si on ne le connaît 
 
 ## 🪤 Piège 10 — fancy indexing retourne une copie
 
-python
 
 ```python
 a = np.array([10, 20, 30, 40])

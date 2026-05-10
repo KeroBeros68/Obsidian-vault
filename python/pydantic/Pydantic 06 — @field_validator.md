@@ -1,4 +1,4 @@
-#pydantic #field_validator #validation #custom
+#python #pydantic #field_validator #validation #custom
 
 ## Syntaxe de base
 

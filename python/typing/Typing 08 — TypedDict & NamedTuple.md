@@ -2,7 +2,6 @@
 
 ## TypedDict — dict avec types de clés fixes
 
-python
 
 ```python
 from typing import TypedDict
@@ -29,7 +28,6 @@ cfg: Config = {"host": "localhost", "port": 5432}   # ✅ debug absent
 
 ## TypedDict — syntaxe alternative (pour clés invalides en Python)
 
-python
 
 ```python
 # Si la clé n'est pas un identifiant Python valide
@@ -48,7 +46,6 @@ WeirdDict = TypedDict("WeirdDict", {"content-type": str, "x-auth": str})
 
 ## NamedTuple — tuple avec champs nommés et typés
 
-python
 
 ```python
 from typing import NamedTuple

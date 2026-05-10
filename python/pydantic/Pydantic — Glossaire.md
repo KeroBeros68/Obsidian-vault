@@ -1,4 +1,4 @@
-#pydantic #glossaire #référence
+#python #pydantic #glossaire #référence
 
 |Terme|Définition|
 |---|---|

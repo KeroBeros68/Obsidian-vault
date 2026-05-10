@@ -2,7 +2,6 @@
 
 ## Types primitifs
 
-python
 
 ```python
 name:   str   = "Alice"
@@ -14,7 +13,6 @@ data:   bytes = b"hello"
 
 ## Listes
 
-python
 
 ```python
 # Python 3.9+
@@ -29,7 +27,6 @@ tags: List[str] = ["python"]
 
 ## Dictionnaires
 
-python
 
 ```python
 # Python 3.9+
@@ -44,7 +41,6 @@ ages: Dict[str, int] = {}
 
 ## Tuples
 
-python
 
 ```python
 # Tuple de longueur fixe — chaque position a son type
@@ -62,7 +58,6 @@ point: Tuple[int, int] = (10, 20)
 
 ## Sets & frozensets
 
-python
 
 ```python
 unique_tags: set[str]        = {"python", "typing"}
@@ -71,7 +66,6 @@ immutable:   frozenset[int]  = frozenset({1, 2, 3})
 
 ## Séquences et mappings abstraits
 
-python
 
 ```python
 from collections.abc import Sequence, Mapping, MutableMapping
@@ -90,7 +84,6 @@ def get_name(data: Mapping[str, str]) -> str:
 
 ## Type Any — désactiver la vérification
 
-python
 
 ```python
 from typing import Any

@@ -57,7 +57,6 @@ json
 
 ## reveal_type — inspecter le type inféré
 
-python
 
 ```python
 # reveal_type est une fonction magique du type checker (pas à l'exécution)
@@ -73,7 +72,6 @@ reveal_type(result)       # Revealed type is "int"
 
 ## # type: ignore — supprimer une erreur mypy
 
-python
 
 ```python
 x: int = "hello"                  # ❌ mypy error
@@ -85,7 +83,6 @@ x: int = "hello"  # type: ignore[assignment]
 
 ## cast — forcer un type sans vérification
 
-python
 
 ```python
 from typing import cast

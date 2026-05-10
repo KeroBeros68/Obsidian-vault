@@ -1,8 +1,7 @@
-#pandas #filtrage #apply #map #transformation
+#python #pandas #filtrage #apply #map #transformation
 
 ## Filtrage
 
-python
 
 ```python
 df[df["age"] > 28]
@@ -13,7 +12,6 @@ df[~df["ville"].isin(["Paris","Lyon"])]   # exclusion
 
 ## apply — transformer une colonne
 
-python
 
 ```python
 df["age"].apply(lambda x: x * 2)
@@ -29,7 +27,6 @@ df["cat"] = df["age"].apply(categorise)
 
 ## apply sur les lignes — axis=1
 
-python
 
 ```python
 df["ratio"] = df.apply(lambda row: row["salaire"]/row["age"], axis=1)
@@ -46,7 +43,6 @@ df["ratio"] = df.apply(lambda row: row["salaire"]/row["age"], axis=1)
 
 ## map — remplacer via dictionnaire
 
-python
 
 ```python
 df["code"] = df["ville"].map({"Paris":75,"Lyon":69,"Bordeaux":33})
@@ -54,7 +50,6 @@ df["code"] = df["ville"].map({"Paris":75,"Lyon":69,"Bordeaux":33})
 
 ## replace
 
-python
 
 ```python
 df["ville"].replace("Lyon","LYON")
@@ -63,7 +58,6 @@ df["ville"].replace({"Paris":"PAR","Lyon":"LYO"})
 
 ## np.where — if/else vectorisé
 
-python
 
 ```python
 df["bonus"] = np.where(df["salaire"] > 4000, df["salaire"]*0.1, 0)
@@ -71,7 +65,6 @@ df["bonus"] = np.where(df["salaire"] > 4000, df["salaire"]*0.1, 0)
 
 ## np.select — conditions multiples
 
-python
 
 ```python
 conditions = [(df["age"]<25)&(df["salaire"]>3000),
@@ -82,7 +75,6 @@ df["cat"] = np.select(conditions, choix, default="standard")
 
 ## pd.cut — discrétiser
 
-python
 
 ```python
 df["tranche"] = pd.cut(df["age"], bins=[0,25,35,100],
@@ -91,7 +83,6 @@ df["tranche"] = pd.cut(df["age"], bins=[0,25,35,100],
 
 ## query — filtres lisibles
 
-python
 
 ```python
 df.query("age > 25 and ville == 'Paris'")
@@ -101,7 +92,6 @@ df.query("salaire > @seuil")   # @ pour les variables Python
 
 ## assign — ajouter des colonnes proprement
 
-python
 
 ```python
 df = (df

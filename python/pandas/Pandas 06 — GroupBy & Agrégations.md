@@ -1,8 +1,7 @@
-#pandas #groupby #agg #transform #pivot
+#python #pandas #groupby #agg #transform #pivot
 
 ## Syntaxe de base
 
-python
 
 ```python
 df.groupby("ville")["salaire"].mean()
@@ -12,7 +11,6 @@ df.groupby("ville")["salaire"].count()
 
 ## Grouper par plusieurs colonnes
 
-python
 
 ```python
 df.groupby(["ville","senior"])["salaire"].mean()
@@ -20,7 +18,6 @@ df.groupby(["ville","senior"])["salaire"].mean()
 
 ## agg — plusieurs agrégations
 
-python
 
 ```python
 df.groupby("ville")["salaire"].agg(["mean","min","max","count"])
@@ -38,7 +35,6 @@ df.groupby("ville").agg({"salaire":["mean","max"],"age":["mean","min"]})
 
 ## transform — garde la shape originale
 
-python
 
 ```python
 df["moy_ville"] = df.groupby("ville")["salaire"].transform("mean")
@@ -48,7 +44,6 @@ df["moy_ville"] = df.groupby("ville")["salaire"].transform("mean")
 
 ## filter — filtrer des groupes entiers
 
-python
 
 ```python
 df.groupby("ville").filter(lambda g: len(g) >= 2)
@@ -56,7 +51,6 @@ df.groupby("ville").filter(lambda g: len(g) >= 2)
 
 ## pivot_table — tableau croisé dynamique
 
-python
 
 ```python
 df.pivot_table(
@@ -67,7 +61,6 @@ df.pivot_table(
 
 ## value_counts
 
-python
 
 ```python
 df["ville"].value_counts()              # fréquences

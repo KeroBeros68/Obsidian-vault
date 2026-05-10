@@ -2,7 +2,6 @@
 
 ## Callable — annoter une fonction en paramètre
 
-python
 
 ```python
 from collections.abc import Callable
@@ -24,7 +23,6 @@ def run(callback: Callable[..., None]) -> None:
 
 ## Callable avec plusieurs paramètres
 
-python
 
 ```python
 # Callable[[arg1, arg2, ...], retour]
@@ -41,7 +39,6 @@ apply_transform(repeat, "ab", 3)   # "ababab"
 
 ## Iterator & Iterable
 
-python
 
 ```python
 from collections.abc import Iterator, Iterable
@@ -61,7 +58,6 @@ sum_all(range(10))         # ✅
 
 ## Generator — yield complet
 
-python
 
 ```python
 from collections.abc import Generator
@@ -84,7 +80,6 @@ def accumulator() -> Generator[float, float, str]:
 
 ## AsyncIterator & AsyncGenerator
 
-python
 
 ```python
 from collections.abc import AsyncIterator, AsyncGenerator

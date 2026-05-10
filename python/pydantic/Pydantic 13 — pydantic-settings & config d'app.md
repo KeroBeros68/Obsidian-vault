@@ -1,4 +1,4 @@
-#pydantic #settings #env #config #dotenv
+#python #pydantic #settings #env #config #dotenv
 
 ## Installation
 

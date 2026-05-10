@@ -1,4 +1,4 @@
-#numpy #shape #dtype #dimensions
+#python #numpy #shape #dtype #dimensions
 
 ## Attributs essentiels
 

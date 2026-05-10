@@ -2,7 +2,6 @@
 
 ## Syntaxe complète
 
-python
 
 ```python
 def create_user(
@@ -18,7 +17,6 @@ def create_user(
 
 ## Retours complexes
 
-python
 
 ```python
 from typing import Optional
@@ -39,7 +37,6 @@ def parse(text: str) -> int | None:
 
 ## NoReturn — fonction qui ne revient jamais
 
-python
 
 ```python
 from typing import NoReturn
@@ -55,7 +52,6 @@ def exit_app() -> NoReturn:
 
 ## @overload — signatures multiples
 
-python
 
 ```python
 from typing import overload
@@ -76,7 +72,6 @@ result_str: str = process("hi")   # ✅ mypy sait que c'est un str
 
 ## Self — retourner l'instance courante (3.11+)
 
-python
 
 ```python
 from typing import Self
@@ -100,7 +95,6 @@ b = SpecialBuilder().set_name("Alice").set_age(30)
 
 ## ParamSpec — annoter les décorateurs (3.10+)
 
-python
 
 ```python
 from typing import ParamSpec, TypeVar, Callable

@@ -2,7 +2,6 @@
 
 ## Annotated — attacher des métadonnées à un type
 
-python
 
 ```python
 from typing import Annotated
@@ -16,7 +15,6 @@ x: Annotated[int, "doit être positif"]   # Python ignore le str
 
 ## Avec Pydantic — contraintes réutilisables
 
-python
 
 ```python
 from typing import Annotated
@@ -42,7 +40,6 @@ class Employee(BaseModel):
 
 ## Avec FastAPI — validation des paramètres
 
-python
 
 ```python
 from fastapi import Query, Path
@@ -58,7 +55,6 @@ def list_users(
 
 ## Annotated comme documentation machine-readable
 
-python
 
 ```python
 from typing import Annotated
@@ -75,7 +71,6 @@ Name   = Annotated[str,   NonEmpty()]
 
 ## get_type_hints — récupérer les annotations résolues
 
-python
 
 ```python
 import typing

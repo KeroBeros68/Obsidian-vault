@@ -1,4 +1,4 @@
-#pydantic #rootmodel #typeadapter #validation
+#python #pydantic #rootmodel #typeadapter #validation
 
 ## RootModel — valider un type sans champs nommés
 

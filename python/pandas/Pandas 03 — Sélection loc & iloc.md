@@ -1,4 +1,4 @@
-#pandas #loc #iloc #sélection #indexation
+#python #pandas #loc #iloc #sélection #indexation
 
 ## Les trois façons de sélectionner
 
@@ -12,7 +12,6 @@
 
 ## iloc — par position
 
-python
 
 ```python
 df.iloc[0]           # 1ère ligne
@@ -26,7 +25,6 @@ df.iloc[:, 1]        # toute la colonne 1
 
 ## loc — par étiquette
 
-python
 
 ```python
 df.loc[0]                    # ligne index 0
@@ -40,7 +38,6 @@ df.loc[1:2, "nom":"ville"]   # plage de colonnes
 
 ## Sélection conditionnelle
 
-python
 
 ```python
 df.loc[df["age"] > 28]
@@ -50,7 +47,6 @@ df.loc[(df["age"] > 25) & (df["ville"] == "Paris")]
 
 ## Modifier avec loc
 
-python
 
 ```python
 df.loc[0, "age"] = 26
@@ -61,7 +57,6 @@ df.loc[df["ville"] == "Paris", "age"] = 99
 
 ## Accès rapide à une cellule
 
-python
 
 ```python
 df.at[0, "age"]    # par étiquette (rapide)

@@ -1,4 +1,4 @@
-#pydantic #sqlalchemy #orm #database #schema
+#python #pydantic #sqlalchemy #orm #database #schema
 
 ## Pattern de base — schéma séparé du modèle ORM
 

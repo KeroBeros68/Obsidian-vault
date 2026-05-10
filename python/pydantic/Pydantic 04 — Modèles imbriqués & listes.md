@@ -1,4 +1,4 @@
-#pydantic #nested #listes #composition
+#python #pydantic #nested #listes #composition
 
 ## Modèle imbriqué
 

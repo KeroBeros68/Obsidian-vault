@@ -2,7 +2,6 @@
 
 ## 🪤 Piège 1 — Les annotations n'ont aucun effet à l'exécution
 
-python
 
 ```python
 def add(a: int, b: int) -> int:
@@ -14,7 +13,6 @@ add("hello", "world")   # ✅ Python l'accepte au runtime !
 
 ## 🪤 Piège 2 — Optional[str] ≠ paramètre optionnel
 
-python
 
 ```python
 def greet(name: Optional[str]) -> str:   # ❌ name est OBLIGATOIRE, mais peut valoir None
@@ -29,7 +27,6 @@ def greet(name: str = "Anonyme") -> str:         # ✅ optionnel, ne peut pas va
 
 ## 🪤 Piège 3 — List vs list en Python 3.8
 
-python
 
 ```python
 # Python 3.8 — List doit venir de typing
@@ -44,7 +41,6 @@ tags: list[str] = []   # ✅
 
 ## 🪤 Piège 4 — TypeVar mal nommé ou déclaré localement
 
-python
 
 ```python
 def first(items):
@@ -58,7 +54,6 @@ def first(items: list[T]) -> T:
 
 ## 🪤 Piège 5 — Oublier return None dans les branches
 
-python
 
 ```python
 def find(items: list[str], target: str) -> str | None:
@@ -77,7 +72,6 @@ def find(items: list[str], target: str) -> str | None:
 
 ## 🪤 Piège 6 — Muter une Sequence reçue en paramètre
 
-python
 
 ```python
 from collections.abc import Sequence
@@ -94,7 +88,6 @@ def pop_first(items: MutableSequence[int]) -> int:
 
 ## 🪤 Piège 7 — cast sans vérification runtime
 
-python
 
 ```python
 from typing import cast
@@ -110,7 +103,6 @@ x.upper()                          # ❌ AttributeError à l'exécution
 
 ## 🪤 Piège 8 — TypedDict et clés manquantes
 
-python
 
 ```python
 from typing import TypedDict
@@ -125,7 +117,6 @@ u: User = {"name": "Alice", "age": 30, "email": "x"}  # ❌ mypy : "email" incon
 
 ## 🪤 Piège 9 — Confondre ClassVar et instance var
 
-python
 
 ```python
 class Counter:
@@ -138,7 +129,6 @@ class Counter:
 
 ## 🪤 Piège 10 — Protocol et @runtime_checkable incomplet
 
-python
 
 ```python
 @runtime_checkable
@@ -156,7 +146,6 @@ isinstance(Circle(), Drawable)   # ✅ True au runtime (vérifie seulement les m
 
 ## 🪤 Piège 11 — from **future** import annotations casse get_type_hints
 
-python
 
 ```python
 from __future__ import annotations
@@ -172,7 +161,6 @@ typing.get_type_hints(Config, globalns=globals())   # ✅ fournir le contexte
 
 ## 🪤 Piège 12 — Any propagé silencieusement
 
-python
 
 ```python
 from typing import Any

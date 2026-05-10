@@ -1,4 +1,4 @@
-#pydantic #pièges #erreurs #debugging
+#python #pydantic #pièges #erreurs #debugging
 
 ## 🪤 Piège 1 — Oublier @classmethod sur @field_validator
 

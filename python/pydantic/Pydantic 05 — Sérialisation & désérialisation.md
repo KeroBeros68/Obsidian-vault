@@ -1,4 +1,4 @@
-#pydantic #serialisation #json #model_dump #model_validate
+#python #pydantic #serialisation #json #model_dump #model_validate
 
 ## Désérialiser — créer depuis des données
 

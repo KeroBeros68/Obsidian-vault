@@ -2,7 +2,6 @@
 
 ## Le problème — isinstance est trop rigide
 
-python
 
 ```python
 # Pour annoter "tout objet avec une méthode .draw()"
@@ -34,7 +33,6 @@ render("string")   # ❌ mypy : str n'a pas de méthode draw()
 
 ## Protocol avec attributs
 
-python
 
 ```python
 from typing import Protocol
@@ -58,7 +56,6 @@ introduce(User("Alice"))   # ✅
 
 ## @runtime_checkable — isinstance avec Protocol
 
-python
 
 ```python
 from typing import Protocol, runtime_checkable
@@ -76,7 +73,6 @@ isinstance(42, Sizeable)          # ❌ False
 
 ## Protocoles standards de Python (collections.abc)
 
-python
 
 ```python
 from collections.abc import (

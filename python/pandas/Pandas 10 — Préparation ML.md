@@ -1,4 +1,4 @@
-#pandas #machine-learning #preprocessing #encodage #split
+#python #pandas #machine-learning #preprocessing #encodage #split
 
 ## Pipeline de préparation
 
@@ -12,7 +12,6 @@
 
 ## Encodage des catégorielles
 
-python
 
 ```python
 # Label encoding (ordinales)
@@ -25,7 +24,6 @@ df = pd.get_dummies(df, columns=["ville"], drop_first=True)
 
 ## Séparer X et y
 
-python
 
 ```python
 y = df["salaire"]
@@ -34,7 +32,6 @@ X = df.drop(columns=["salaire"])
 
 ## Train / Test split
 
-python
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -48,7 +45,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 ## Normalisation
 
-python
 
 ```python
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -65,7 +61,6 @@ X_test_s  = scaler.transform(X_test)       # transform SEULEMENT sur test
 
 ## Imputation
 
-python
 
 ```python
 from sklearn.impute import SimpleImputer
@@ -76,7 +71,6 @@ X_test_imp  = imputer.transform(X_test)
 
 ## Feature Engineering dates
 
-python
 
 ```python
 df["date"] = pd.to_datetime(df["date"])
@@ -87,7 +81,6 @@ df["annee"]       = df["date"].dt.year
 
 ## Vérifications finales
 
-python
 
 ```python
 assert X_train.isnull().sum().sum() == 0

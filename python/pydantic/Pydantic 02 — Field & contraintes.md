@@ -1,4 +1,4 @@
-#pydantic #field #contraintes #validation
+#python #pydantic #field #contraintes #validation
 
 ## Field — ajouter des contraintes
 

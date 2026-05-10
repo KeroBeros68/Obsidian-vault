@@ -2,7 +2,6 @@
 
 ## Literal — valeurs exactes autorisées
 
-python
 
 ```python
 from typing import Literal
@@ -24,7 +23,6 @@ Mode = Literal["r", "w", "rb", "wb"]
 
 ## Literal pour le narrowing
 
-python
 
 ```python
 def handle(event: Literal["click", "hover", "focus"]) -> str:
@@ -37,7 +35,6 @@ def handle(event: Literal["click", "hover", "focus"]) -> str:
 
 ## Final — constante non réassignable
 
-python
 
 ```python
 from typing import Final
@@ -56,7 +53,6 @@ class Config:
 
 ## ClassVar — variable de classe vs instance
 
-python
 
 ```python
 from typing import ClassVar

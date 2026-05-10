@@ -1,8 +1,7 @@
-#pandas #series #dataframe #bases
+#python #pandas #series #dataframe #bases
 
 ## Import
 
-python
 
 ```python
 import pandas as pd
@@ -11,7 +10,6 @@ import numpy as np
 
 ## Series — tableau 1D avec index
 
-python
 
 ```python
 s = pd.Series([10, 20, 30], index=["a","b","c"])
@@ -21,7 +19,6 @@ s[0]      # 10 — accès par position
 
 Depuis un dictionnaire :
 
-python
 
 ```python
 s = pd.Series({"Paris": 2_000_000, "Lyon": 500_000})
@@ -29,7 +26,6 @@ s = pd.Series({"Paris": 2_000_000, "Lyon": 500_000})
 
 ## DataFrame — tableau 2D
 
-python
 
 ```python
 df = pd.DataFrame({
@@ -53,7 +49,6 @@ df = pd.DataFrame({
 
 ## Exploration rapide
 
-python
 
 ```python
 df.head(5)      # 5 premières lignes
@@ -64,7 +59,6 @@ df.describe()   # stats descriptives
 
 ## Accéder aux colonnes
 
-python
 
 ```python
 df["age"]           # → Series  (1 crochet)
@@ -74,7 +68,6 @@ df.age              # notation pointée (fragile)
 
 ## Ajouter / supprimer des colonnes
 
-python
 
 ```python
 df["senior"] = df["age"] > 30              # ajouter

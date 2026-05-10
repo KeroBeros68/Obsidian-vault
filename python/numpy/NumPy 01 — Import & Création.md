@@ -1,4 +1,4 @@
-#numpy #création #bases
+#python #numpy #création #bases
 
 ## Import
 

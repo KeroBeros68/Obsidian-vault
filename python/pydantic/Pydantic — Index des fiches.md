@@ -1,4 +1,4 @@
-#pydantic #validation #python #backend
+#python #pydantic #validation #python #backend
 
 ## Fiches disponibles
 

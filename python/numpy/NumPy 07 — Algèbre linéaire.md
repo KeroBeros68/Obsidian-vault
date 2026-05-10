@@ -1,4 +1,4 @@
-#numpy #linalg #matriciel #dot
+#python #numpy #linalg #matriciel #dot
 
 ## `*` vs `@` — la distinction fondamentale
 

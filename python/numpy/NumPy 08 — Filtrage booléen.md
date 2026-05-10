@@ -1,4 +1,4 @@
-#numpy #booléen #filtrage #masque #where
+#python #numpy #booléen #filtrage #masque #where
 
 ## Masque booléen
 

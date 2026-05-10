@@ -28,9 +28,7 @@
 - [[Typing — Glossaire]]
 - [[Typing — Pièges classiques]]
 
-## Liens utiles
+## Prérequis & suite
 
 - [[Pydantic — Index des fiches]] ← suite logique
 - [[FastAPI — Index des fiches]] ← suite logique
-- [[Typing — Glossaire]]
-- [[Typing — Pièges classiques]]

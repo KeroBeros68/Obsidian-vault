@@ -2,7 +2,6 @@
 
 ## None — une fonction sans retour
 
-python
 
 ```python
 def log(message: str) -> None:
@@ -12,7 +11,6 @@ def log(message: str) -> None:
 
 ## Optional — valeur ou None
 
-python
 
 ```python
 from typing import Optional
@@ -30,7 +28,6 @@ def find_user(name: str) -> str | None:
 
 ## Union — plusieurs types possibles
 
-python
 
 ```python
 from typing import Union
@@ -53,7 +50,6 @@ def stringify(value: int | float | str) -> str:
 
 ## Tester le type au runtime — isinstance
 
-python
 
 ```python
 def process(value: int | str) -> str:
@@ -66,7 +62,6 @@ def process(value: int | str) -> str:
 
 ## Narrowing — rétrécissement de type
 
-python
 
 ```python
 def greet(name: str | None) -> str:

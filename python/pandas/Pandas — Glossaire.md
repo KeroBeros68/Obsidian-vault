@@ -1,4 +1,4 @@
-#pandas #glossaire #référence
+#python #pandas #glossaire #référence
 
 |Terme|Définition|
 |---|---|
