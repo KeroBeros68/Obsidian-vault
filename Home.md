@@ -4,6 +4,12 @@
 
 ## Python
 
+### bases
+- [[Bases Python — Index des fiches]]
+
+### oop
+- [[OOP Python — Index des fiches]]
+
 ### Typing
 - [[Typing — Annotations de type — Index des fiches]]
 
@@ -19,6 +25,9 @@
 ---
 
 ## C / C++
+
+### bases
+- [[Bases — Index des fiches]]
 
 ### pointeurs
 - [[Pointeurs — Index des fiches]]
