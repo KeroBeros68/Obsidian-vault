@@ -1,5 +1,8 @@
 #python #numpy #linalg #matriciel #dot
 
+> [!info] Prérequis théoriques
+> [[Algèbre linéaire — Index des fiches]] ← vecteurs, matrices, déterminant, valeurs propres, SVD
+
 ## `*` vs `@` — la distinction fondamentale
 
 > [!warning] Ne pas confondre ! `a * b` → multiplication **élément par élément** `a @ b` → **produit matriciel**

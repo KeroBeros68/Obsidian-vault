@@ -10,6 +10,9 @@
 ### oop
 - [[OOP Python — Index des fiches]]
 
+### generateurs
+- [[Générateurs — Index des fiches]]
+
 ### Typing
 - [[Typing — Annotations de type — Index des fiches]]
 
@@ -68,6 +71,9 @@
 ---
 
 ## Mathématiques
+
+### algebre-lineaire
+- [[Algèbre linéaire — Index des fiches]]
 
 ---
 
