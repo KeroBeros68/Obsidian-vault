@@ -25,7 +25,7 @@
 
 ## Prérequis & suite
 
-- Prérequis : variables C, types de base, structures (`struct`)
+- [[Bases — Index des fiches]] ← prérequis : variables, types, structures (`struct`)
 - [[Mémoire — Index des fiches]] ← suite directe : allocation dynamique
 - [[Posix — Index des fiches]] ← suite : programmation système POSIX
 - [[Pthread — Index des fiches]] ← suite : threads et synchronisation

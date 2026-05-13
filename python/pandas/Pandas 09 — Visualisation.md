@@ -56,3 +56,6 @@ df["salaire"].hist(ax=axes[1])
 plt.tight_layout()
 plt.show()
 ```
+
+> [!info] Pour aller plus loin
+> Ce module couvre l'intégration Pandas → visualisation rapide. Pour le contrôle complet des graphiques, voir [[Matplotlib & Seaborn — Index des fiches]].

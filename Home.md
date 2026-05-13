@@ -1,97 +1,21 @@
 #home #index
 
-# Vault
+## Langages
 
-## Python
-
-### bases
-- [[Bases Python — Index des fiches]]
-
-### oop
-- [[OOP Python — Index des fiches]]
-
-### generateurs
-- [[Générateurs — Index des fiches]]
-
-### Typing
-- [[Typing — Annotations de type — Index des fiches]]
-
-### NumPy
-- [[NumPy — Index des fiches]]
-
-### Pandas
-- [[Pandas — Index des fiches]]
-
-### Pydantic
-- [[Pydantic — Index des fiches]]
-
----
-
-## C / C++
-
-### bases
-- [[Bases — Index des fiches]]
-
-### pointeurs
-- [[Pointeurs — Index des fiches]]
-
-### memoire
-- [[Mémoire — Index des fiches]]
-
-### posix
-- [[Posix — Index des fiches]]
-
-### pthread
-- [[Pthread — Index des fiches]]
-
----
-
-## Rust
-
----
-
-## Zig
-
----
-
-## Java
-
----
-
-## JavaScript / TypeScript
-
----
-
-## C#
-
----
-
-## Algorithmique
-
----
+- [[Python — Home]]
+- [[C — Home]]
 
 ## Mathématiques
 
-### algebre-lineaire
-- [[Algèbre linéaire — Index des fiches]]
+- [[Math — Home]]
 
----
+## Algorithmique
+
+- [[Algo — Home]]
 
 ## DevOps
 
----
-
 ## Intelligence Artificielle
 
----
+- [[IA — Home]]
 
-## Parcours recommandés
-
-```
-Python    : Typing → Pydantic → FastAPI
-                             → SQLAlchemy
-            NumPy  → Pandas
-
-Rust      : ...
-Algo      : ...
-```
