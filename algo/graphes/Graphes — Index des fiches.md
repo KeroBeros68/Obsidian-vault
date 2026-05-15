@@ -27,6 +27,6 @@
 
 ## Prérequis & suite
 
-- [[Manques]] ← Structures de données (P2, non couvert) — prérequis : tas, files, piles
+- [[SD — Index des fiches]] ← prérequis : tas, files de priorité, Union-Find
 - [[Tri — Index des fiches]] ← prérequis : complexité O(n log n), tri des arêtes (Kruskal)
 - [[Manques]] ← Flux dans les réseaux (P3, non couvert) — suite : Ford-Fulkerson, Edmonds-Karp

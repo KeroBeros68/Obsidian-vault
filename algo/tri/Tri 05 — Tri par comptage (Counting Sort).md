@@ -103,7 +103,7 @@ ids   = [1000042, 9, 5000321, 42]        # k=5M pour 4 éléments → gaspillage
 ```
 
 > [!tip] Counting sort comme sous-routine
-> Counting sort est la brique de base du **tri radix** ([[Tri 06]]). Sa stabilité est indispensable pour que radix sort fonctionne correctement.
+> Counting sort est la brique de base du **tri radix** ([[Tri 06 — Tri par base (Radix Sort)]]). Sa stabilité est indispensable pour que radix sort fonctionne correctement.
 
 > [!warning] Condition d'utilisation
 > Réservé aux valeurs **entières et bornées**. Pour les flottants ou chaînes, utiliser bucket sort ou radix sort adapté. Si k > 10·n environ, le coût de l'initialisation du tableau de comptage dépasse le gain.

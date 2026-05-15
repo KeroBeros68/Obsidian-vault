@@ -27,3 +27,4 @@
 ## Prérequis & suite
 
 - [[IA — Index des fiches]] ← prérequis : comprendre les LLM avant le RAG
+- [[Agents — Index des fiches]] ← suite naturelle de l'Agentic RAG

@@ -38,5 +38,6 @@
 ## Prérequis & suite
 
 - [[Typing — Annotations de type — Index des fiches]] ← prérequis
+- [[Déco — Index des fiches]] ← prérequis : @field_validator, @model_validator, @computed_field
 - [[FastAPI — Index des fiches]] ← suite logique
 - [[SQLAlchemy — Index des fiches]] ← intégration ORM
