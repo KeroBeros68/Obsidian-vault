@@ -9,6 +9,7 @@
 - [[Générateurs — Index des fiches]]
 - [[Typing — Annotations de type — Index des fiches]]
 - [[Déco — Index des fiches]]
+- [[asyncio — Index des fiches]]
 
 ### Données
 
@@ -23,8 +24,8 @@
 ## Parcours recommandés
 
 ```
-Langage   : Bases → OOP → Générateurs → Typing → Décorateurs → Pydantic → FastAPI
-                                                                          → SQLAlchemy
+Langage   : Bases → OOP → Générateurs → Typing → Décorateurs → asyncio → Pydantic → FastAPI
+                                                                                    → SQLAlchemy
 
 Données   : Bases → NumPy → Pandas → Matplotlib / Seaborn
 

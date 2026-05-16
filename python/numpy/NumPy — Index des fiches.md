@@ -28,3 +28,4 @@
 ## Prérequis & suite
 
 - [[Pandas — Index des fiches]] ← suite logique
+- [[Python — Home]] ← retour module Python

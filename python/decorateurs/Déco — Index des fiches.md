@@ -36,3 +36,4 @@
 - [[Générateurs — Index des fiches]] ← prérequis : Générateurs 06 (send/throw) utilise @wraps
 - [[Pydantic — Index des fiches]] ← suite : @field_validator, @model_validator, @computed_field
 - [[Manques]] ← FastAPI (non couvert) — suite : décorateurs de routes @app.get/@app.post
+- [[Python — Home]] ← retour module Python

@@ -30,4 +30,6 @@
 - [[IA — Index des fiches]] ← prérequis : comprendre les LLM
 - [[RAG — Index des fiches]] ← prérequis : l'Agentic RAG introduit les agents
 - [[MCP — Index des fiches]] ← suite : protocole universel pour connecter les outils des agents
-- [[Manques]] ← Fine-tuning (non couvert) — suite logique
+- [[LangChain — Index des fiches]] ← suite : implémentation concrète (LangGraph, agents ReAct)
+- [[Fine-tuning — Index des fiches]] ← suite logique
+- [[IA — Home]] ← retour module IA

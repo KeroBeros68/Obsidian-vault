@@ -27,4 +27,4 @@
 
 ## Prérequis & suite
 
-- [[Posix — Index des fiches]] ← prérequis : processus, fork, signaux, IPC
+- [[Posix — Index des fiches]] ← prérequis : processus, fork, signaux, IPC- [[C — Home]] ← retour module C

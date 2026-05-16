@@ -32,3 +32,4 @@
 - [[Pthread — Index des fiches]] ← suite directe : threads dans un processus POSIX
 - [[stdatomic — Index des fiches]] ← suite : opérations atomiques C11
 - [[Kernel Linux — Synchronisation]] ← suite avancée : `futex`, `clone(2)`, appels système bas niveau
+- [[C — Home]] ← retour module C

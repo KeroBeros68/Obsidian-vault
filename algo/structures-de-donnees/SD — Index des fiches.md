@@ -42,3 +42,4 @@ SD 01-02 → SD 03-04 → SD 05-06 → SD 07-08 → SD 09 → Graphes
   - [[Graphes 06 — A-star — Recherche heuristique]] ← SD 03-05
   - [[Graphes 08 — Prim — Arbre couvrant minimal]] ← SD 03-05
   - [[Graphes 07 — Kruskal — Arbre couvrant minimal]] ← SD 09 (Union-Find)
+- [[Algo — Home]] ← retour module Algo

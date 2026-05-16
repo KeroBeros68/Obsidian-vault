@@ -33,3 +33,4 @@
 - [[Pandas — Index des fiches]] ← prérequis : DataFrame, Series, groupby
 - [[Pandas 09 — Visualisation]] ← point d'entrée Pandas vers ce module
 - [[Matplotlib Seaborn 09 — Graphiques ML]] ← prérequis supplémentaire : notions ML / scikit-learn
+- [[Python — Home]] ← retour module Python

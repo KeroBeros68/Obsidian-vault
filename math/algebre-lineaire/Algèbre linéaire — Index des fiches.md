@@ -26,3 +26,4 @@
 ## Prérequis & suite
 
 - [[NumPy 07 — Algèbre linéaire]] ← suite directe : implémentation avec numpy.linalg
+- [[Math — Home]] ← retour module Math

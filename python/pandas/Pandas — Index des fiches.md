@@ -30,3 +30,4 @@
 ## Prérequis & suite
 
 - [[NumPy — Index des fiches]] ← prérequis
+- [[Python — Home]] ← retour module Python

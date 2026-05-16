@@ -25,3 +25,4 @@
 - [[Algèbre linéaire — Index des fiches]] ← pour aller vers le ML théorique
 - [[NumPy — Index des fiches]] ← implémentation numérique
 - [[Pandas — Index des fiches]] ← manipulation des données
+- [[IA — Home]] ← retour module IA

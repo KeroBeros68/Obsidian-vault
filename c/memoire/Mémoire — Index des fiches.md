@@ -26,3 +26,4 @@
 - [[Pointeurs — Index des fiches]] ← prérequis : pointeurs, adresses, déréférencement
 - [[Posix — Index des fiches]] ← suite : mmap, mémoire partagée, sémaphores
 - [[Pthread — Index des fiches]] ← suite : threads, gestion mémoire partagée entre threads
+- [[C — Home]] ← retour module C

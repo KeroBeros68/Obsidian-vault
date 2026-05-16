@@ -26,4 +26,5 @@
 
 - [[IA — Index des fiches]] ← prérequis (comprendre les LLM)
 - [[Agents — Index des fiches]] ← prérequis (les agents utilisent MCP pour leurs outils)
-- [[Manques]] ← Fine-tuning (non couvert) — suite logique
+- [[Fine-tuning — Index des fiches]] ← suite logique
+- [[IA — Home]] ← retour module IA

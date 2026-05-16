@@ -57,16 +57,16 @@ Ne demande pas tout d'un coup pour un projet important. Décompose en étapes.
 
 Remplace "améliore ça" par un verbe qui dit exactement quelle transformation appliquer.
 
-| Verbe | Ce que ça fait |
-|---|---|
-| **Vulgarise** | Rend accessible à un non-expert |
-| **Nuance** | Ajoute des subtilités et perspectives variées |
-| **Restructure** | Réorganise la logique et l'ordre des idées |
-| **Illustre** | Enrichit avec des exemples concrets |
-| **Synthétise** | Fusionne plusieurs idées en vision cohérente |
-| **Argumente** | Renforce avec des preuves et de la logique |
-| **Fluidifie** | Améliore les transitions et la cohérence |
-| **Segmente** | Découpe en sections plus digestes |
+| Verbe           | Ce que ça fait                                |
+| --------------- | --------------------------------------------- |
+| **Vulgarise**   | Rend accessible à un non-expert               |
+| **Nuance**      | Ajoute des subtilités et perspectives variées |
+| **Restructure** | Réorganise la logique et l'ordre des idées    |
+| **Illustre**    | Enrichit avec des exemples concrets           |
+| **Synthétise**  | Fusionne plusieurs idées en vision cohérente  |
+| **Argumente**   | Renforce avec des preuves et de la logique    |
+| **Fluidifie**   | Améliore les transitions et la cohérence      |
+| **Segmente**    | Découpe en sections plus digestes             |
 
 > [!warning] Le verbe seul ne suffit pas
 > "Vulgarise" est mieux qu'"améliore" mais reste faible seul.

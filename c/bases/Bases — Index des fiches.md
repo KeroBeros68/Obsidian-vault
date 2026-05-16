@@ -26,3 +26,4 @@
 - [[Pointeurs — Index des fiches]] ← suite directe
 - [[Mémoire — Index des fiches]] ← suite : allocation dynamique
 - [[Posix — Index des fiches]] ← suite : programmation système
+- [[C — Home]] ← retour module C

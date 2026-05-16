@@ -13,9 +13,22 @@
 
 - [[Algo — Home]]
 
-## DevOps
-
 ## Intelligence Artificielle
 
 - [[IA — Home]]
 
+---
+
+## Parcours transversaux
+
+```
+API Python   : Bases Python → OOP → Typing → Décorateurs → asyncio → Pydantic → FastAPI → SQLAlchemy
+
+Data / ML    : Bases Python → NumPy → Pandas → Algèbre linéaire → ML / scikit-learn
+
+IA & Agents  : IA 01-03 → RAG → Agents → MCP → Fine-tuning
+
+Algo         : Structures de données → Tri → Graphes → Programmation dynamique
+
+Systèmes C   : Bases C → Pointeurs → Mémoire → Posix → Pthread → stdatomic
+```

@@ -69,5 +69,6 @@ Besoin de trier ?
 
 ## Prérequis & suite
 
-- [[Manques]] ← Structures de données (P2, non couvert) — prérequis : tas, files, tableaux
+- [[SD — Index des fiches]] ← prérequis : tas, files, tableaux
 - [[Graphes — Index des fiches]] ← suite logique (O(n log n) de Kruskal, tri des arêtes)
+- [[Algo — Home]] ← retour module Algo

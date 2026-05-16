@@ -28,3 +28,5 @@
 - [[Bases Python — Index des fiches]] ← prérequis : fonctions, boucles, compréhensions
 - [[OOP Python — Index des fiches]] ← prérequis : `__iter__`, `__next__` (protocole)
 - [[Typing — Annotations de type — Index des fiches]] ← suite : Typing 07 (Callable, Iterator, Generator)
+- [[asyncio — Index des fiches]] ← suite : Générateurs 06 → asyncio (coroutines)
+- [[Python — Home]] ← retour module Python

@@ -18,6 +18,27 @@
 
 - [[MCP — Index des fiches]]
 
+### LLMOps
+
+- [[LLMOps — Index des fiches]]
+
+### Fine-tuning
+
+- [[Fine-tuning — Index des fiches]]
+
+### LangChain & LangGraph
+
+- [[LangChain — Index des fiches]]
+
+### Outils & bases de données vectorielles
+
+- [[Chroma — Index des fiches]]
+- [[BM25S — Index des fiches]]
+
+### BM25S — Recherche lexicale
+
+- [[BM25S — Index des fiches]]
+
 ## Parcours recommandés
 
 ```
@@ -28,6 +49,12 @@ RAG       : IA 01-03 → RAG 01 → 02 → 03 → 04 → 08 → 05 → 06 → 07
 Agents    : IA 01-03 → RAG 06 → Agents 01 → 02 → 03 → 04 → 05 → 06 → 07/08/09
 
 MCP       : IA 01-03 → Agents 01-03 → MCP 01 → 02 → 03 → 04 → 05 → 06
+
+LLMOps    : IA 01-03 → RAG → Agents → LLMOps 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09
+
+Fine-tuning : IA 01-03 → RAG → Agents → FT 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
+
+LangChain  : IA 01-03 → RAG → Agents → LC 01-05 → 06 → 07-10 → 11-13 → 14-16
 
 Vers le ML : Algèbre linéaire → NumPy → Pandas → ML (scikit-learn)
 ```

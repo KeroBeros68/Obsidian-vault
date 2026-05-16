@@ -27,3 +27,4 @@
 - [[NumPy — Index des fiches]] ← suite : calcul numérique
 - [[Pandas — Index des fiches]] ← suite : manipulation de données
 - [[Pydantic — Index des fiches]] ← suite : validation de données
+- [[Python — Home]] ← retour module Python

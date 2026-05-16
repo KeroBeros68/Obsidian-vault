@@ -28,3 +28,5 @@
 
 - [[IA — Index des fiches]] ← prérequis : comprendre les LLM avant le RAG
 - [[Agents — Index des fiches]] ← suite naturelle de l'Agentic RAG
+- [[BM25S — Index des fiches]] ← approfondissement : implémentation BM25 pour le Hybrid RAG
+- [[IA — Home]] ← retour module IA

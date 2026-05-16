@@ -29,3 +29,4 @@
 - [[Bases Python — Index des fiches]] ← prérequis : fonctions, modules, types
 - [[Typing — Annotations de type — Index des fiches]] ← suite : Typing 05 (Generics), Typing 06 (Protocoles)
 - [[Pydantic — Index des fiches]] ← suite : validation basée sur les classes
+- [[Python — Home]] ← retour module Python

@@ -1,4 +1,4 @@
-#python #pydantic #validation #python #backend
+#python #pydantic #validation #backend
 
 ## Fiches disponibles
 
@@ -41,3 +41,4 @@
 - [[Déco — Index des fiches]] ← prérequis : @field_validator, @model_validator, @computed_field
 - [[FastAPI — Index des fiches]] ← suite logique
 - [[SQLAlchemy — Index des fiches]] ← intégration ORM
+- [[Python — Home]] ← retour module Python

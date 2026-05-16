@@ -29,3 +29,4 @@
 - [[Mémoire — Index des fiches]] ← suite directe : allocation dynamique
 - [[Posix — Index des fiches]] ← suite : programmation système POSIX
 - [[Pthread — Index des fiches]] ← suite : threads et synchronisation
+- [[C — Home]] ← retour module C
