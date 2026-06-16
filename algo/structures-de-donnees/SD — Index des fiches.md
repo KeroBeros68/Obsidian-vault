@@ -14,6 +14,7 @@
 - [[SD 05 — Tas binaire (Heap)]]
 - [[SD 06 — Arbre binaire de recherche (ABR - BST)]]
 - [[SD 07 — Trie (arbre de préfixes)]]
+- [[SD 11 — Arbre syntaxique abstrait (AST)]]
 
 ### Associatives & ensembles
 
@@ -36,6 +37,7 @@ SD 01-02 → SD 03-04 → SD 05-06 → SD 07-08 → SD 09 → Graphes
 
 - [[Bases Python — Index des fiches]] ← prérequis : listes, dicts, sets natifs
 - [[Tri — Index des fiches]] ← prérequis : complexité O(n log n), analyse de complexité
+- [[Arbres — Index des fiches]] ← suite : BST complet, AVL, rouge-noir, B-tree, heapq avancé
 - [[Graphes — Index des fiches]] ← suite directe
   - [[Graphes 02 — BFS — Parcours en largeur]] ← SD 01-02 (pile, file)
   - [[Graphes 05 — Dijkstra — Plus court chemin]] ← SD 03-05 (file de priorité, tas min)

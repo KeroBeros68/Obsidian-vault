@@ -10,6 +10,10 @@
 
 - [[Tri — Index des fiches]]
 
+### Arbres
+
+- [[Arbres — Index des fiches]]
+
 ### Graphes
 
 - [[Graphes — Index des fiches]]
@@ -19,7 +23,8 @@
 ```
 Fondations : SD 01-02 → SD 03-04 → SD 05-06 → SD 07-08 → SD 09
 Tri        : SD → Tri 01 → 02 → 03 → 04
-Graphes    : SD + Tri → Graphes 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → (09)
+Arbres     : SD 05-06 → Arbres 01 → 02 → 03 → 04 → 05 → 06
+Graphes    : SD + Tri + Arbres → Graphes 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → (09)
 Avancé     : Graphes → Flux dans les réseaux (manquant)
 ```
 

@@ -44,3 +44,9 @@
 | **LRU cache** | Least Recently Used — cache qui évince l'élément le moins récemment utilisé |
 | **complexité amortie** | Coût moyen sur n opérations — ex: O(1) amorti pour l'insertion tableau dynamique |
 | **Big-O** | Borne supérieure asymptotique — comportement dans le pire cas |
+| **AST** | Abstract Syntax Tree — arbre typé représentant la structure grammaticale d'un code source |
+| **nœud AST** | Élément de l'arbre (Assign, BinOp, Call…) avec des enfants et des métadonnées (ligne, colonne) |
+| **parsing** | Analyse syntaxique — transformer une suite de tokens en AST |
+| **patron visiteur** | Design pattern pour parcourir un AST sans modifier sa structure |
+| **patron transformateur** | Variante du visiteur qui retourne un nouveau nœud — permet de réécrire l'AST |
+| **ast.unparse()** | Regénérer du code Python depuis un AST (Python ≥ 3.9) |

@@ -17,6 +17,12 @@
 - [[Pandas — Index des fiches]]
 - [[Matplotlib & Seaborn — Index des fiches]]
 
+### Utilitaires
+
+- [[tqdm — Index des fiches]]
+- [[AST Python — Index des fiches]]
+- [[fire — Index des fiches]]
+
 ### Frameworks
 
 - [[Pydantic — Index des fiches]]

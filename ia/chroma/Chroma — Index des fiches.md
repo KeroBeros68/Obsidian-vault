@@ -27,6 +27,7 @@
 ## Prérequis & suite
 
 - [[RAG 02 — Embeddings et Vector Databases]] ← prérequis : concepts théoriques
+- [[TR 06 — Embeddings avec Sentence Transformers]] ← prérequis : génération des embeddings
 - [[LC 08 — Embeddings et Vectorstores]] ← prérequis : usage LangChain
 - [[BM25S 06 — Hybrid RAG BM25S + vectoriel]] ← Hybrid RAG avec Chroma
 - [[IA — Home]] ← retour module IA

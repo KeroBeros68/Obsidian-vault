@@ -32,6 +32,9 @@ retriever_filtré = vectorstore.as_retriever(
 
 ## MultiQueryRetriever — plusieurs reformulations
 
+> [!warning] Migration en cours
+> `from langchain.retrievers import ...` fonctionne encore pour `MultiQueryRetriever`, `ContextualCompressionRetriever` et `LLMChainExtractor` mais ces classes migrent progressivement vers `langchain_community.retrievers`.
+
 Génère plusieurs variantes de la question pour améliorer le recall.
 
 ```python

@@ -29,4 +29,5 @@
 - [[IA — Index des fiches]] ← prérequis : comprendre les LLM
 - [[RAG — Index des fiches]] ← prérequis : alternative au fine-tuning à connaître
 - [[LLMOps — Index des fiches]] ← prérequis : évaluation et déploiement en production
+- [[Transformers — Index des fiches]] ← suite : implémentation pratique (Trainer, PEFT, TRL, quantification)
 - [[IA — Home]] ← retour module IA

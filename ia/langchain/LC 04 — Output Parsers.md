@@ -135,6 +135,9 @@ résultat = chain.invoke({"description": "iPhone 15 Pro, 1299€, en stock"})
 
 ## OutputFixingParser — retry automatique
 
+> [!warning] Dépréciation prévue
+> `from langchain.output_parsers import OutputFixingParser` fonctionne encore mais sera migré vers `langchain_community`. Suivre les release notes LangChain pour la migration.
+
 Si le LLM retourne un JSON malformé, ce parser relance un appel pour corriger.
 
 ```python

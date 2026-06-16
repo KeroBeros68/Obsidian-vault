@@ -149,7 +149,7 @@ tool_ddg = DuckDuckGoSearchRun()
 tool_tavily = TavilySearchResults(max_results=3)
 
 # Calculatrice
-from langchain.tools import WikipediaQueryRun
+from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 tool_wiki = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
 

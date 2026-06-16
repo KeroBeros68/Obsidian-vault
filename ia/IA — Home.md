@@ -30,13 +30,21 @@
 
 - [[LangChain — Index des fiches]]
 
+### DSPy
+
+- [[DSPy — Index des fiches]]
+
+### Hugging Face Transformers
+
+- [[Transformers — Index des fiches]]
+
+### Structured Output & Constrained Decoding
+
+- [[CD — Index des fiches]]
+
 ### Outils & bases de données vectorielles
 
 - [[Chroma — Index des fiches]]
-- [[BM25S — Index des fiches]]
-
-### BM25S — Recherche lexicale
-
 - [[BM25S — Index des fiches]]
 
 ## Parcours recommandés
@@ -55,6 +63,12 @@ LLMOps    : IA 01-03 → RAG → Agents → LLMOps 01 → 02 → 03 → 04 → 0
 Fine-tuning : IA 01-03 → RAG → Agents → FT 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
 
 LangChain  : IA 01-03 → RAG → Agents → LC 01-05 → 06 → 07-10 → 11-13 → 14-16
+
+Transformers : IA 01-03 → Fine-tuning FT 01-05 → TR 01-04 → 05-06 → 09-11 → 12-14
+
+DSPy         : IA 01-03 → RAG → Agents → DSPy 01-04 → 05-07 → 08-10
+
+Structured Output : IA 01-03 → TR 05 → CD 01-02 → CD 03-06 (librairies) → CD 07-09 (intégrations)
 
 Vers le ML : Algèbre linéaire → NumPy → Pandas → ML (scikit-learn)
 ```

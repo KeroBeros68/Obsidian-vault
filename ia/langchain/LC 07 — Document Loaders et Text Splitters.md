@@ -44,7 +44,8 @@ docs = loader.load()
 ## Text Splitters — découper en chunks
 
 ```python
-from langchain.text_splitter import (
+# pip install langchain-text-splitters
+from langchain_text_splitters import (
     RecursiveCharacterTextSplitter,   # le plus utilisé
     CharacterTextSplitter,            # coupe sur un seul séparateur
     TokenTextSplitter,                # coupe par nombre de tokens
@@ -65,7 +66,7 @@ print(chunks[0].page_content)
 print(chunks[0].metadata)   # → source préservée !
 
 # MarkdownHeaderTextSplitter — respecte la hiérarchie des titres
-from langchain.text_splitter import MarkdownHeaderTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter
 
 splitter_md = MarkdownHeaderTextSplitter(
     headers_to_split_on=[
@@ -77,6 +78,9 @@ splitter_md = MarkdownHeaderTextSplitter(
 chunks_md = splitter_md.split_text(texte_markdown)
 # → metadata contient "titre", "section", "sous_section"
 ```
+
+> [!warning] Package séparé depuis LangChain 0.1
+> `langchain.text_splitter` a été extrait dans un package dédié. `pip install langchain-text-splitters` est requis, puis `from langchain_text_splitters import ...`.
 
 > [!tip] Paramètres par défaut
 > `chunk_size=512` et `chunk_overlap=50` sont de bons points de départ. Augmente si les réponses manquent de contexte, diminue si elles contiennent trop de bruit.
