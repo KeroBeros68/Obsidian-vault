@@ -18,6 +18,10 @@
 
 - [[IA — Home]]
 
+## DevOps
+
+- [[DevOps — Home]]
+
 ---
 
 ## Parcours transversaux
