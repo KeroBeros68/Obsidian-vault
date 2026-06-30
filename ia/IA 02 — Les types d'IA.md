@@ -52,13 +52,13 @@ Résultat (classification, prédiction, génération)
 
 Crée du **nouveau contenu** à partir de ce qu'elle a appris.
 
-| Type | Outils | Produit |
-|---|---|---|
-| LLM | Claude, ChatGPT, Gemini | Texte, code, analyse |
-| Diffusion | Midjourney, DALL·E | Images |
-| Text-to-speech | ElevenLabs | Voix réaliste |
-| Text-to-video | Runway, Sora | Vidéo |
-| Text-to-music | Suno | Musique complète |
+| Type           | Outils                  | Produit              |
+| -------------- | ----------------------- | -------------------- |
+| LLM            | Claude, ChatGPT, Gemini | Texte, code, analyse |
+| Diffusion      | Midjourney, DALL·E      | Images               |
+| Text-to-speech | ElevenLabs              | Voix réaliste        |
+| Text-to-video  | Runway, Sora            | Vidéo                |
+| Text-to-music  | Suno                    | Musique complète     |
 
 > [!warning] Hallucination
 > Les LLM peuvent inventer des faits avec une confiance totale. Toujours vérifier les informations importantes.

@@ -54,7 +54,7 @@ services:
     networks: [backend]    # db n'est accessible que depuis 'backend'
 ```
 
-Compose crée un réseau bridge dédié par projet (voir [[Docker 04 — Réseaux]]) : tous les services qui partagent un réseau peuvent se joindre par leur **nom de service**, sans configuration DNS manuelle.
+Compose crée un réseau bridge dédié par projet (voir [[Docker 06 — Réseaux]]) : tous les services qui partagent un réseau peuvent se joindre par leur **nom de service**, sans configuration DNS manuelle.
 
 ## Cas particuliers
 

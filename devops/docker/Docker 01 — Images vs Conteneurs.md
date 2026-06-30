@@ -34,10 +34,10 @@ Cette stratégie explique pourquoi démarrer un conteneur prend quelques millise
 ## Cas particuliers
 
 > [!warning] La couche du conteneur disparaît avec lui
-> Toutes les données écrites dans la couche en lecture-écriture d'un conteneur sont **perdues** quand ce conteneur est supprimé (`docker rm`). Pour des données qui doivent survivre, voir [[Docker 03 — Volumes & persistance]].
+> Toutes les données écrites dans la couche en lecture-écriture d'un conteneur sont **perdues** quand ce conteneur est supprimé (`docker rm`). Pour des données qui doivent survivre, voir [[Docker 05 — Volumes & persistance]].
 
 > [!tip] Une image = un cache de build
-> Le fait que les couches soient réutilisables est la base du système de cache de `docker build` : si une couche n'a pas changé depuis le dernier build, Docker la réutilise au lieu de la reconstruire. Détails dans [[Docker 02 — Dockerfile]].
+> Le fait que les couches soient réutilisables est la base du système de cache de `docker build` : si une couche n'a pas changé depuis le dernier build, Docker la réutilise au lieu de la reconstruire. Détails dans [[Docker 03 — Dockerfile]].
 
 > [!info] Driver de stockage
 > `overlay2` est le driver recommandé sur Linux moderne (noyau ≥ 4.0). D'anciens drivers (`aufs`, `devicemapper`) existent mais sont obsolètes sur les installations actuelles.

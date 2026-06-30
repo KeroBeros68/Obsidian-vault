@@ -2,6 +2,10 @@
 
 ## Modules disponibles
 
+### Scripting & Automatisation
+
+- [[Bash — Index des fiches]]
+
 ### Conteneurs
 
 - [[Docker — Index des fiches]]
@@ -9,8 +13,9 @@
 ## Parcours recommandés
 
 ```
-Conteneurs : Docker 01 → 02 → 03 → 04 → 05
-Déploiement : FastAPI → Docker → Kubernetes (manquant)
+Scripting  : Bash 01-04 → 05-07 → 08-09
+Conteneurs : Docker 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08
+Déploiement : Bash → Docker → FastAPI → Kubernetes (manquant)
 ```
 
 ## Prérequis & suite

@@ -5,16 +5,19 @@
 ### Fondamentaux
 
 - [[Docker 01 — Images vs Conteneurs]]
-- [[Docker 02 — Dockerfile]]
+- [[Docker 02 — Cycle de vie & debugging]]
+- [[Docker 03 — Dockerfile]]
+- [[Docker 04 — Registry & distribution]]
 
 ### Intermédiaire
 
-- [[Docker 03 — Volumes & persistance]]
-- [[Docker 04 — Réseaux]]
+- [[Docker 05 — Volumes & persistance]]
+- [[Docker 06 — Réseaux]]
 
 ### Avancé
 
-- [[Docker 05 — Docker Compose]]
+- [[Docker 07 — Docker Compose]]
+- [[Docker 08 — Sécurité des conteneurs]]
 
 ### Référence
 
