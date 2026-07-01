@@ -6,10 +6,14 @@
 
 - [[Algèbre linéaire — Index des fiches]]
 
+### Probabilités & Statistiques
+
+- [[Probabilites — Index des fiches]]
+
 ## Parcours recommandés
 
 ```
-Math → IA : Algèbre linéaire → NumPy → Pandas → ML
+Math → IA : Algèbre linéaire → Probabilités → NumPy → Pandas → ML
 ```
 
 > [!info] Règle de la branche math

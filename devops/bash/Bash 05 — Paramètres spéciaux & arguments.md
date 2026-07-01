@@ -2,15 +2,15 @@
 
 ## Vue d'ensemble
 
-| Paramètre | Signification |
-|-----------|----------------|
-| `$0` | Nom du script (ou de la fonction parente) |
-| `$1`, `$2`, ... | Arguments positionnels (1er, 2e argument...) |
-| `$#` | Nombre d'arguments passés |
-| `$@` | Tous les arguments, comme une liste de mots séparés |
-| `$*` | Tous les arguments, comme une seule chaîne |
-| `$?` | Code de sortie de la dernière commande exécutée |
-| `$$` | PID (identifiant de processus) du script courant |
+| Paramètre       | Signification                                       |
+| --------------- | --------------------------------------------------- |
+| `$0`            | Nom du script (ou de la fonction parente)           |
+| `$1`, `$2`, ... | Arguments positionnels (1er, 2e argument...)        |
+| `$#`            | Nombre d'arguments passés                           |
+| `$@`            | Tous les arguments, comme une liste de mots séparés |
+| `$*`            | Tous les arguments, comme une seule chaîne          |
+| `$?`            | Code de sortie de la dernière commande exécutée     |
+| `$$`            | PID (identifiant de processus) du script courant    |
 
 ## $0, $1, $#
 

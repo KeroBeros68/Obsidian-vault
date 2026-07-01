@@ -38,16 +38,16 @@ kill -9 <PID>
 
 ## Réseau
 
-| Commande | Utilité | Exemple |
-|----------|---------|---------|
-| `curl` | Effectuer une requête HTTP / télécharger | `curl -I https://example.com` *(`-I` : headers seulement)* |
-| `wget` | Télécharger un fichier | `wget https://example.com/fichier.zip` |
-| `ssh` | Se connecter à une machine distante | `ssh user@serveur.example.com` |
-| `scp` | Copier un fichier vers/depuis une machine distante | `scp fichier.txt user@serveur:/chemin/` |
-| `ping` | Tester la connectivité réseau | `ping -c 4 example.com` *(`-c 4` : 4 paquets puis arrêt)* |
-| `ss` | Lister les connexions/sockets réseau | `ss -tulnp` *(TCP/UDP, écoute, numérique, process)* |
-| `ip` | Gérer interfaces, adresses, routes | `ip addr show` *(affiche les IP des interfaces)* |
-| `dig` | Interroger le DNS | `dig example.com +short` |
+| Commande | Utilité                                            | Exemple                                                    |
+| -------- | -------------------------------------------------- | ---------------------------------------------------------- |
+| `curl`   | Effectuer une requête HTTP / télécharger           | `curl -I https://example.com` *(`-I` : headers seulement)* |
+| `wget`   | Télécharger un fichier                             | `wget https://example.com/fichier.zip`                     |
+| `ssh`    | Se connecter à une machine distante                | `ssh user@serveur.example.com`                             |
+| `scp`    | Copier un fichier vers/depuis une machine distante | `scp fichier.txt user@serveur:/chemin/`                    |
+| `ping`   | Tester la connectivité réseau                      | `ping -c 4 example.com` *(`-c 4` : 4 paquets puis arrêt)*  |
+| `ss`     | Lister les connexions/sockets réseau               | `ss -tulnp` *(TCP/UDP, écoute, numérique, process)*        |
+| `ip`     | Gérer interfaces, adresses, routes                 | `ip addr show` *(affiche les IP des interfaces)*           |
+| `dig`    | Interroger le DNS                                  | `dig example.com +short`                                   |
 
 ```bash
 # Vérifier quel processus écoute sur le port 80
