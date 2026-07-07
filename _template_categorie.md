@@ -6,7 +6,7 @@ Ce fichier documente les conventions du vault. Copier-coller les blocs ci-dessou
 
 ## Arborescence
 
-Le vault est organisé par **domaine** puis par **module**. Le niveau intermédiaire est optionnel si le domaine est simple.
+Le vault est organisé par **domaine** puis par **module**. Le niveau intermédiaire est optionnel si le domaine est simple ; il devient une **sous-catégorie spécialisée** quand plusieurs modules du domaine couvrent la même famille de technologies (ex. conteneurs, orchestration).
 
 ```
 [domaine]/
@@ -17,6 +17,8 @@ Le vault est organisé par **domaine** puis par **module**. Le niveau intermédi
     ├── [Module] 01 — [Titre].md
     ├── [Module] 02 — [Titre].md
     └── ...
+
+[domaine]/[sous-catégorie]/[module]/   ← variante avec niveau intermédiaire
 ```
 
 **Exemples de domaines :**
@@ -35,8 +37,9 @@ math/algebre-lineaire/
 math/probabilites/
 algo/graphes/
 algo/tri/
-devops/docker/
-devops/kubernetes/
+devops/containers/docker/       ← sous-catégorie "containers" (regrouperait aussi Kubernetes, Podman...)
+devops/nginx/
+devops/secrets/
 ia/transformers/
 ia/rag/
 ```

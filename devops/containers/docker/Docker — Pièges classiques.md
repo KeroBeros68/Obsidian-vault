@@ -119,6 +119,106 @@ CMD ["node", "server.js"]   # ✅ processus exécuté en utilisateur non-root
 
 ---
 
+## 🪤 Piège 9 — depends_on sans condition ne garantit pas la disponibilité du service
+
+```yaml
+services:
+  api:
+    build: .
+    depends_on:
+      - db   # ❌ attend que le conteneur démarre, pas que la DB soit prête à répondre
+  db:
+    image: postgres:17
+```
+
+```yaml
+services:
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy   # ✅ attend que le healthcheck de db soit "healthy"
+  db:
+    image: postgres:17
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+```
+
+> [!warning] "Démarré" ne veut pas dire "prêt"
+> Un conteneur peut être démarré (processus lancé) bien avant que le service qu'il héberge accepte des connexions. Voir [[Docker 07 — Docker Compose]].
+
+---
+
+## 🪤 Piège 10 — Écrire dans un chemin VOLUME après l'avoir déclaré
+
+```dockerfile
+FROM mysql:8
+VOLUME ["/var/lib/mysql"]
+RUN echo "init" > /var/lib/mysql/marker.txt   # ❌ écriture ignorée au lancement du conteneur
+```
+
+> [!warning] Le contenu du volume remplace celui de l'image à l'exécution
+> Dès qu'un chemin est déclaré par `VOLUME`, tout ce qui a été écrit à cet emplacement par une instruction Dockerfile **après** cette déclaration est ignoré au démarrage du conteneur — le chemin est remplacé par le volume (anonyme ou nommé), pas par le contenu de la couche d'image. Voir [[Docker 03 — Dockerfile]].
+
+---
+
+## 🪤 Piège 11 — Choisir une image minimale sans anticiper ses limites
+
+```dockerfile
+FROM scratch
+COPY --from=builder /app/myapp /myapp
+ENTRYPOINT ["/myapp"]
+# ❌ Le moindre appel HTTPS échoue : aucun certificat CA n'est présent dans scratch
+```
+
+```dockerfile
+FROM gcr.io/distroless/base-debian12
+# ❌ Aucun shell : "docker exec ... sh" échoue en cas d'incident en production
+```
+
+> [!warning] Minimal ne veut pas dire prêt à l'emploi tel quel
+> `scratch` n'embarque aucun certificat CA (copier `/etc/ssl/certs/ca-certificates.crt` depuis le stage de build, ou préférer `distroless/static` qui les inclut). Une image distroless standard n'a pas de shell : le tag `:debug` existe pour un diagnostic ponctuel, mais ne doit jamais remplacer l'image de production. Voir [[Docker 03 — Dockerfile]].
+
+---
+
+## 🪤 Piège 12 — Publier un port sans restreindre l'interface
+
+```bash
+docker run -p 3306:3306 mysql   # ❌ équivaut à -p 0.0.0.0:3306:3306 : accessible depuis l'extérieur
+```
+
+```bash
+docker run -p 127.0.0.1:3306:3306 mysql   # ✅ accessible uniquement depuis l'hôte
+```
+
+> [!warning] `-p` sans IP écoute sur toutes les interfaces
+> Un service qui ne doit être consulté que par un autre conteneur ou par l'hôte lui-même (base de données, outil d'administration) n'a pas besoin d'être exposé sur une interface publique. Voir [[Docker 06 — Réseaux]].
+
+---
+
+## 🪤 Piège 13 — Croire que `docker.sock:ro` protège quelque chose
+
+```yaml
+# ❌ :ro ne bloque aucune écriture, seulement le remplacement du fichier socket
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock:ro
+```
+
+```bash
+# La preuve : un POST d'arrêt fonctionne quand même à travers ce montage :ro
+docker run --rm --user 0 -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  curlimages/curl -X POST --unix-socket /var/run/docker.sock \
+  "http://localhost/v1.44/containers/$CID/stop"
+# 204 — le conteneur s'arrête réellement
+```
+
+> [!warning] `:ro` porte sur le fichier, pas sur l'API
+> Le socket est un canal de communication HTTP avec le démon : un `POST` d'écriture emprunte le même canal qu'un `GET` de lecture, et `:ro` ne les distingue pas. La seule protection réelle est un `docker-socket-proxy` qui filtre les endpoints. Voir [[Docker 15 — Socket-proxy (sécuriser l'accès au socket)]].
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -131,3 +231,8 @@ CMD ["node", "server.js"]   # ✅ processus exécuté en utilisateur non-root
 | Déploiement imprévisible avec :latest | Toujours une version explicite en production |
 | Confusion entre créer et entrer dans un conteneur | `run` crée, `exec` entre dans l'existant |
 | Conteneur exécuté en root sans le savoir | Toujours déclarer un `USER` non-root explicite |
+| Service qui démarre avant d'être vraiment prêt | `depends_on` avec `condition: service_healthy` + un `healthcheck` |
+| Écriture après `VOLUME` ignorée à l'exécution | Initialiser les données via un script d'entrée, pas via le Dockerfile |
+| Image minimale (scratch/distroless) qui casse HTTPS ou le debug | Copier les certificats CA, utiliser `:debug` uniquement en diagnostic |
+| Port publié accessible depuis l'extérieur sans le vouloir | Préfixer `-p` par `127.0.0.1:` pour un service local uniquement |
+| `docker.sock:ro` censé bloquer les écritures | Passer par un `docker-socket-proxy` filtrant, `:ro` seul ne protège rien |

@@ -71,3 +71,48 @@ docker pull myapp@sha256:abc123def456...
 
 > [!info] Registry implicite
 > Si aucun registry n'est précisé dans le nom de l'image, Docker suppose Docker Hub. Toujours qualifier intégralement le nom pour tout autre registry, afin d'éviter toute ambiguïté en script ou en CI.
+
+Pour la structure interne du manifest, le multi-arch et les artefacts OCI (SBOM, signatures), voir [[Conteneurs — OCI]].
+
+## Registry mirrors : cache local pour Docker Hub
+
+Un **registry mirror** agit comme cache : `docker pull` l'interroge en premier, et il ne redescend vers Docker Hub que si l'image n'y est pas déjà. Réduit la bande passante sortante et limite l'exposition aux rate limits de Docker Hub.
+
+```json
+{ "registry-mirrors": ["https://mirror.gcr.io"] }
+```
+
+Réglage du démon (voir [[Docker 10 — Configuration production & nettoyage]]), pas une option de `docker pull` — vérification : `docker info | grep -A5 "Registry Mirrors"`.
+
+## Registries internes sans HTTPS valide
+
+```json
+{ "insecure-registries": ["registry.local:5000", "192.168.1.100:5000"] }
+```
+
+> [!warning] `insecure-registries` désactive la vérification TLS
+> À ne jamais utiliser pour un registry exposé au-delà d'un réseau strictement contrôlé. Pour un registry interne avec un certificat auto-signé, préférer ajouter son certificat CA plutôt que désactiver la vérification :
+> ```bash
+> sudo mkdir -p /etc/docker/certs.d/registry.local:5000
+> sudo cp ca.crt /etc/docker/certs.d/registry.local:5000/
+> ```
+
+## Authentification : credential helpers
+
+`docker login` stocke les identifiants dans `~/.docker/config.json` — un fichier **par utilisateur**, distinct de `daemon.json` (qui s'applique à tout le démon).
+
+```bash
+docker login registry.example.com
+cat ~/.docker/config.json   # identifiants stockés ici (en clair par défaut, sauf credential helper)
+```
+
+Pour éviter un stockage en clair, un **credential helper** délègue l'authentification au gestionnaire d'identifiants du fournisseur cloud :
+
+```json
+{
+  "credHelpers": {
+    "gcr.io": "gcloud",
+    "*.dkr.ecr.*.amazonaws.com": "ecr-login"
+  }
+}
+```
