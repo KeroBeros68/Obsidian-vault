@@ -38,7 +38,7 @@ math/probabilites/
 algo/graphes/
 algo/tri/
 devops/containers/docker/       ← sous-catégorie "containers" (regrouperait aussi Kubernetes, Podman...)
-devops/nginx/
+devops/web/nginx/                ← sous-catégorie "web" (regrouperait aussi Apache, Caddy...)
 devops/secrets/
 ia/transformers/
 ia/rag/

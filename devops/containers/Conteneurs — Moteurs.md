@@ -8,7 +8,7 @@ Un **moteur de conteneurs** (*container engine*) est le logiciel qui permet de c
 |-----------|----------|------|
 | Engine (moteur complet) | Docker, Podman | Build + run + interface utilisateur |
 | Runtime (exécution seule) | containerd, CRI-O | Exécution uniquement, orienté CRI/Kubernetes |
-| Build tools | BuildKit, Buildah, Kaniko | Construction d'images uniquement |
+| Build tools | BuildKit, Buildah, Kaniko | Construction d'images uniquement — voir [[Builders — Index des fiches]] |
 | Conteneurs système | LXC, Incus | OS complet dans un conteneur (logique "VM légère") |
 
 ## Panorama : les 6 moteurs comparés

@@ -111,3 +111,8 @@
 | **Docker Bench Security** | Script officiel auditant la conformité au CIS Docker Benchmark sur l'hôte, le démon et les conteneurs en cours d'exécution. |
 | **docker-socket-proxy** | Conteneur qui se place devant le vrai socket Docker, expose un endpoint TCP filtré, et refuse par défaut tout `POST` (écriture) — seuls les groupes d'endpoints explicitement déclarés sont ouverts. |
 | **Groupe d'endpoints (socket-proxy)** | Ensemble de routes API activées par une variable du proxy (`CONTAINERS`, `IMAGES`, `NETWORKS`, `EVENTS`...), correspondant à un besoin de lecture précis. |
+| **Docker Engine** | Le moteur Docker seul (démon + CLI), sans interface graphique — installation native sur Linux. |
+| **Docker Desktop** | Distribution de Docker avec interface graphique pour Windows/macOS/Linux, gratuite en usage personnel, payante au-delà de 250 salariés ou 10M$ de revenus. |
+| **Colima** | Alternative open source et gratuite à Docker Desktop sur macOS (*Containers on Lima*), sans interface graphique. |
+| **docker.io vs docker-ce** | `docker.io` est le paquet packagé par les dépôts Ubuntu/Debian (souvent en retard) ; `docker-ce` vient du dépôt officiel Docker — à ne jamais installer ensemble. |
+| **Groupe docker** | Groupe Unix dont l'appartenance permet d'utiliser Docker sans `sudo` — équivalent fonctionnel à un accès root sur la machine, comme le socket Docker. |

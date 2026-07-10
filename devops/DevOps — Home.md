@@ -13,10 +13,15 @@
 - [[Conteneurs — Moteurs]] ← comparatif Docker/Podman/containerd/CRI-O/LXC/Incus, pour choisir son moteur
 - [[Conteneurs — OCI]] ← standard OCI : tag/digest, manifest, multi-arch, artefacts
 - [[Docker — Index des fiches]]
+- [[Builders — Index des fiches]] ← outils de build d'images (BuildKit, Buildah, Kaniko, Buildpacks, Bake)
 
 ### Serveurs web
 
+- [[Serveurs Web — Choisir son serveur]] ← Nginx vs Apache vs Caddy
+- [[Serveurs Web — Concepts fondamentaux]] ← HTTP, virtual hosts, reverse proxy, TLS, cache, logs
+- [[Serveurs Web — Checklist production & dépannage]]
 - [[Nginx — Index des fiches]]
+- [[Apache — Index des fiches]]
 
 ### Sécurité
 
@@ -26,8 +31,8 @@
 
 ```
 Scripting   : Bash 01-04 → 05-07 → 08-09 → Cron 01-04
-Conteneurs  : Docker 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15
-Serveurs web : Nginx 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09
+Conteneurs  : Docker 00 → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → Builders 01 → 02
+Serveurs web : Nginx 00 → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 10 → 11 → 08 → 12 → 09 → 13 → 14 → 15 → 16, Apache 00 → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 (prérequis : Serveurs Web — Choisir son serveur → Concepts fondamentaux)
 Sécurité    : Docker 08 → 11 → Secrets 01 → 02 → 03 → 04 → 05 → 06
 Déploiement : Bash → Docker → Nginx → FastAPI → Kubernetes (manquant)
 ```

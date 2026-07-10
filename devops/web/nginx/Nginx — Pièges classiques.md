@@ -57,6 +57,88 @@ ssl_protocols TLSv1.2 TLSv1.3;
 
 ---
 
+## 🪤 Piège 5 — Se tromper sur le slash final dans `proxy_pass`
+
+```nginx
+# ❌ Le préfixe /api/ est conservé : /api/users → http://backend:3000/api/users
+location /api/ {
+    proxy_pass http://backend:3000;
+}
+```
+
+```nginx
+# ✅ Si le backend attend /users sans préfixe : ajouter le slash final
+location /api/ {
+    proxy_pass http://backend:3000/;
+}
+```
+
+> [!warning] Un seul caractère change le chemin transmis au backend
+> Voir [[Nginx 10 — Reverse proxy HTTP & WebSockets]] pour le détail complet ; en cas de doute, `curl -v` révèle immédiatement l'URI réellement reçue par le backend.
+
+---
+
+## 🪤 Piège 6 — Confondre `root` et `alias`
+
+```nginx
+# ❌ Avec root, le chemin de la location s'AJOUTE : /images/photo.jpg → /var/www/images/photo.jpg (peut ne pas exister)
+location /images/ {
+    root /var/www;
+}
+```
+
+```nginx
+# ✅ Avec alias, le chemin de la location est REMPLACÉ : /images/photo.jpg → /data/photos/photo.jpg
+location /images/ {
+    alias /data/photos/;
+}
+```
+
+> [!warning] 404 alors que le fichier existe bien sur le disque
+> Confondre les deux directives fait chercher Nginx au mauvais endroit exact, sans message d'erreur explicite. Voir [[Nginx 11 — root, alias & recettes de routing]].
+
+---
+
+## 🪤 Piège 7 — DNS figé en environnement Docker/Kubernetes
+
+```nginx
+# ❌ Résolu une seule fois au démarrage : Nginx garde l'ancienne IP après un redéploiement du backend
+proxy_pass http://backend:3000;
+```
+
+```nginx
+# ✅ Force une résolution périodique via une variable
+resolver 127.0.0.11 valid=10s;
+set $backend "http://backend:3000";
+proxy_pass $backend;
+```
+
+> [!warning] Symptôme typique : 502 uniquement après un redéploiement
+> Le service redémarre avec une nouvelle IP, mais Nginx continue à router vers l'ancienne jusqu'à son propre redémarrage — voir [[Nginx 10 — Reverse proxy HTTP & WebSockets]].
+
+---
+
+## 🪤 Piège 8 — `try_files` sans fallback adapté à une SPA
+
+```nginx
+# ❌ Toute route gérée côté client (React Router, etc.) renvoie une 404 serveur
+location / {
+    try_files $uri $uri/ =404;
+}
+```
+
+```nginx
+# ✅ Repli vers index.html, laissant l'application JS gérer la route
+location / {
+    try_files $uri $uri/ /index.html;
+}
+```
+
+> [!tip] Le dernier argument de try_files fait toute la différence
+> `=404` renvoie une erreur, `/index.html` fait une redirection interne — voir [[Nginx 11 — root, alias & recettes de routing]] et [[Nginx 06 — Routing avec location & try_files]] pour le mécanisme général de `try_files`.
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -65,3 +147,7 @@ ssl_protocols TLSv1.2 TLSv1.3;
 | `proxy_pass` utilisé à la place de `fastcgi_pass` (ou l'inverse) | Vérifier le protocole attendu par le backend (HTTP vs FastCGI) |
 | Supposer un ordre "top to bottom" des `location` | Connaître l'ordre réel : exact > préfixe le plus long (`^~` prioritaire) > regex dans l'ordre > repli préfixe |
 | `ssl_protocols` incluant TLSv1/1.1 | Se limiter à `TLSv1.2 TLSv1.3` (profil Intermediate) |
+| Slash final oublié/ajouté dans `proxy_pass` | Tester avec `curl -v`, voir Nginx 10 |
+| `root`/`alias` confondus | `root` ajoute le chemin, `alias` le remplace |
+| Backend redéployé, Nginx route vers l'ancienne IP | `resolver` + `set $backend` pour forcer la résolution périodique |
+| SPA qui reçoit des 404 sur ses routes internes | `try_files ... /index.html` au lieu de `=404` |

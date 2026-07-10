@@ -17,3 +17,12 @@
 | **Terminaison TLS** | Le fait que le chiffrement/déchiffrement TLS s'arrête à Nginx, qui transmet ensuite la requête en clair au backend interne. |
 | **C10K** | Problème historique de tenir 10 000 connexions simultanées avec des ressources limitées ; à l'origine de la conception événementielle de Nginx. |
 | **epoll / kqueue** | Mécanismes du noyau (Linux / BSD) permettant à un worker de surveiller des milliers de connexions sans thread dédié par connexion. |
+| **`proxy_pass`** | Directive transmettant une requête HTTP complète à un backend qui parle HTTP — à ne pas confondre avec `fastcgi_pass`. |
+| **`alias`** | Directive remplaçant le chemin capturé par une `location` par un chemin disque différent — par opposition à `root`, qui l'ajoute. |
+| **Certbot** | Outil automatisant l'obtention et le renouvellement de certificats Let's Encrypt, avec un plugin Nginx dédié (`--nginx`). |
+| **HSTS (Strict-Transport-Security)** | En-tête HTTP forçant le navigateur à n'utiliser que HTTPS pour un domaine donné, pour une durée définie (`max-age`). |
+| **`upstream`** | Bloc de configuration définissant un groupe de serveurs backend, avec un algorithme de répartition (round-robin, `least_conn`, `ip_hash`). |
+| **`proxy_cache`** | Mécanisme stockant les réponses d'un backend pour réduire sa charge, avec une durée de validité configurable par code de statut. |
+| **`limit_req`** | Directive de limitation de débit par IP, avec tolérance de pics (`burst`) configurable. |
+| **`stub_status`** | Module Nginx exposant un aperçu minimal de l'activité du serveur (connexions actives, requêtes traitées). |
+| **Resolver dynamique** | Configuration (`resolver` + variable dans `proxy_pass`) forçant Nginx à réévaluer périodiquement la résolution DNS d'un backend, utile en environnement conteneurisé où l'IP peut changer. |
