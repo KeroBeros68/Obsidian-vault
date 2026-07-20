@@ -6,7 +6,7 @@
 ## Sous-catégories prévues
 
 ### Opérations & SRE (`linux/operations/`)
-- [[Operations — Index des fiches]] ← ✅ démarré : réduction du travail ingrat (toil), dette technique — suites prévues : patch management, baseline & drift, gestion des capacités
+- [[Operations — Index des fiches]] ← ✅ complet : réduction du travail ingrat (toil), dette technique, patch management, baseline & drift, gestion des capacités
 
 ### Fondamentaux (`linux/fondamentaux/`)
 - [[Linux — Découverte & Arborescence — Index des fiches]] ← distributions, terminal/SSH, FHS, navigation, chemins

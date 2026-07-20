@@ -6,6 +6,10 @@
 
 - [[AST Python 01 — Le module ast]]
 
+### Référence
+
+- [[AST Python — Glossaire]]
+
 ## Prérequis & suite
 
 - [[SD 11 — Arbre syntaxique abstrait (AST)]] ← prérequis : comprendre la structure d'un AST

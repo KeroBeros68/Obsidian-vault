@@ -40,6 +40,8 @@ algo/tri/
 devops/containers/docker/       ← sous-catégorie "containers" (regrouperait aussi Kubernetes, Podman...)
 devops/web/nginx/                ← sous-catégorie "web" (regrouperait aussi Apache, Caddy...)
 devops/secrets/
+bdd/sql/                          ← domaine "bdd" (langage de requête, transversal aux moteurs)
+bdd/relationnelles/mysql/        ← sous-catégorie "relationnelles" (regrouperait aussi PostgreSQL, SQLite...)
 ia/transformers/
 ia/rag/
 ```

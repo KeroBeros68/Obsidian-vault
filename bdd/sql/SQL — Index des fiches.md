@@ -29,6 +29,9 @@
 
 ## Prérequis & suite
 
+- [[BDD — Home]] ← retour à l'accueil Bases de données
+- [[BDD — Généralités]] ← prérequis conceptuel (schéma, transactions, ACID, index)
+- [[BDD — Types de bases de données]] ← contexte : SQL est le langage du modèle relationnel, un type de BDD parmi d'autres
 - [[Pandas — Index des fiches]] ← prérequis utile : opérations similaires (groupby, merge, agg)
 - [[Manques]] ← SQLAlchemy (non couvert) — suite directe : ORM Python sur SQL
 - [[LLMOps — Index des fiches]] ← suite : LLMOps 03-04 (evals, métriques avec SQL)

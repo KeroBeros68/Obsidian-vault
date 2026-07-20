@@ -36,4 +36,5 @@
 - [[Serveurs Web — Concepts fondamentaux]] ← prérequis (HTTP, virtual hosts, reverse proxy, TLS, cache, logs — universels)
 - [[Serveurs Web — Checklist production & dépannage]] ← suite logique
 - [[Nginx — Index des fiches]] ← comparaison directe, mêmes concepts avec une syntaxe et une architecture différentes
+- [[Caddy — Index des fiches]] ← comparaison directe, HTTPS automatique vs Certbot manuel
 - [[DevOps — Home]] ← retour à l'accueil DevOps

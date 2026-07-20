@@ -80,6 +80,11 @@ Gérer la dette est un processus continu, comme l'entretien d'un jardin — pas 
 | Règle du scout | Chaque fichier touché est un peu amélioré en passant (« laissez le campement plus propre que trouvé ») | Dette diffuse, équipe disciplinée ; ne traite pas les gros chantiers |
 | Équipe Debt Busters | Équipe dédiée à temps plein (ex. Etsy) qui identifie, chiffre et accompagne le refactoring | Dette critique accumulée sur plusieurs années, budget disponible |
 
+> [!example] Checklist avant merge (règle du scout)
+> - [ ]  Le code ajouté respecte les standards
+> - [ ]  J'ai amélioré au moins une chose dans les fichiers touchés
+> - [ ]  Je n'ai pas ajouté de nouvelle dette (ou je l'ai documentée)
+
 > [!tip] Convaincre le management
 > Traduire en langage business : « on a de la dette technique » devient « chaque fonctionnalité coûte 30% de plus qu'il y a un an » ; « il faut refactoriser » devient « on peut réduire le temps de livraison de 40% » ; « on a besoin de temps » devient « investir 2 semaines maintenant économise 2 mois sur l'année ».
 

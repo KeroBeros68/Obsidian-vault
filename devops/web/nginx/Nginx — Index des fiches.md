@@ -41,3 +41,4 @@
 - [[Docker — Index des fiches]] ← prérequis (le cas d'usage de référence combine Nginx et un conteneur PHP-FPM/WordPress orchestrés via Docker Compose)
 - [[Secrets — Index des fiches]] ← suite logique (gestion des certificats TLS et variables sensibles référencées dans la configuration Nginx)
 - [[Apache — Index des fiches]] ← comparaison directe, mêmes concepts (Virtual Host, reverse proxy, TLS) avec une architecture et une syntaxe différentes
+- [[Caddy — Index des fiches]] ← comparaison directe, HTTPS automatique vs configuration manuelle

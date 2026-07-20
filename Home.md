@@ -4,7 +4,10 @@
 
 - [[Python — Home]]
 - [[C — Home]]
-- [[SQL — Index des fiches]]
+
+## Bases de données
+
+- [[BDD — Home]]
 
 ## Mathématiques
 

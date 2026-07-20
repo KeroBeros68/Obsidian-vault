@@ -52,4 +52,4 @@ Aujourd'hui, Nginx reste le plus utilisé devant les sites à fort trafic, Apach
 
 ## Pour aller plus loin
 
-Ce vault couvre Nginx (voir [[Nginx — Index des fiches]]) et Apache (voir [[Apache — Index des fiches]]) en détail. Caddy n'est pas encore couvert en tant que module dédié.
+Ce vault couvre les trois serveurs en détail : [[Nginx — Index des fiches]], [[Apache — Index des fiches]], [[Caddy — Index des fiches]]. Vocabulaire commun dans [[Serveurs Web — Glossaire]].

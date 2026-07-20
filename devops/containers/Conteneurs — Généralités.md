@@ -67,6 +67,6 @@ La conteneurisation se découpe en couches indépendantes, chacune avec plusieur
 
 ## Pour aller plus loin
 
-Ce panorama pose les concepts communs à tout le domaine ; le choix d'un moteur en particulier est détaillé dans [[Conteneurs — Moteurs]], le format d'image standardisé dans [[Conteneurs — OCI]], et la mise en pratique concrète commence avec [[Docker — Index des fiches]].
+Ce panorama pose les concepts communs à tout le domaine ; le choix d'un moteur en particulier est détaillé dans [[Conteneurs — Moteurs]], le format d'image standardisé dans [[Conteneurs — OCI]], le vocabulaire complet dans [[Conteneurs — Glossaire]], et la mise en pratique concrète commence avec [[Docker — Index des fiches]].
 
 Sources : [Maîtriser la conteneurisation — Stéphane Robert](https://blog.stephane-robert.info/docs/conteneurisation/)
