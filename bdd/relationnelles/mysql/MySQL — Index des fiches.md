@@ -50,6 +50,7 @@
 ## Prérequis & suite
 
 - [[BDD — Home]] ← retour à l'accueil Bases de données
+- [[MariaDB — Index des fiches]] ← module jumeau : fork de MySQL, InnoDB partagé, comparaisons croisées (Aria, Sequences, Galera Cluster)
 - [[BDD — Généralités]] ← prérequis conceptuel (ACID, transactions, index)
 - [[BDD — Types de bases de données]] ← contexte : MySQL est un RDBMS parmi d'autres
 - [[SQL — Index des fiches]] ← prérequis : le langage de requête utilisé par MySQL

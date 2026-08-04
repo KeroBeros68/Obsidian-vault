@@ -139,6 +139,24 @@ location / {
 
 ---
 
+## 🪤 Piège 9 — Un add_header dans une location fait disparaître ceux du parent
+
+```nginx
+http {
+    add_header X-Frame-Options "DENY";
+
+    location /api/ {
+        add_header Cache-Control "no-store";
+        # ❌ X-Frame-Options n'est plus envoyé du tout sur /api/
+    }
+}
+```
+
+> [!warning] Les directives array-like ne fusionnent pas entre contextes
+> Dès qu'un `add_header` apparaît dans un contexte enfant, **tous** les `add_header` hérités du parent sont ignorés, pas complétés — un comportement documenté mais non intuitif. Soit répéter systématiquement chaque en-tête voulu dans la `location`, soit utiliser `add_header_inherit merge;` (Nginx 1.29.3+) pour restaurer un comportement additif. Voir [[Nginx 04 — Structure du fichier de configuration]].
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -151,3 +169,4 @@ location / {
 | `root`/`alias` confondus | `root` ajoute le chemin, `alias` le remplace |
 | Backend redéployé, Nginx route vers l'ancienne IP | `resolver` + `set $backend` pour forcer la résolution périodique |
 | SPA qui reçoit des 404 sur ses routes internes | `try_files ... /index.html` au lieu de `=404` |
+| `add_header` dans une `location` masque ceux du parent | Répéter les en-têtes, ou `add_header_inherit merge;` |

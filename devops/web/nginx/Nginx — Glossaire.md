@@ -26,3 +26,6 @@
 | **`limit_req`** | Directive de limitation de débit par IP, avec tolérance de pics (`burst`) configurable. |
 | **`stub_status`** | Module Nginx exposant un aperçu minimal de l'activité du serveur (connexions actives, requêtes traitées). |
 | **Resolver dynamique** | Configuration (`resolver` + variable dans `proxy_pass`) forçant Nginx à réévaluer périodiquement la résolution DNS d'un backend, utile en environnement conteneurisé où l'IP peut changer. |
+| **Directive array-like** | Directive (`add_header`, `error_page`...) dont les occurrences héritées d'un contexte parent sont entièrement remplacées, pas complétées, dès qu'une seule occurrence est redéfinie dans un contexte enfant. |
+| **`add_header_inherit`** | Directive (Nginx 1.29.3+) restaurant un comportement additif pour `add_header` entre contextes parent/enfant via son paramètre `merge`. |
+| **`nginx -T`** | Variante de `nginx -t` affichant la configuration complète après résolution de tous les `include`, utile pour diagnostiquer une directive qui semble ignorée. |
