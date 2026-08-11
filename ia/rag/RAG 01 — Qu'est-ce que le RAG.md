@@ -78,3 +78,7 @@ Hybrid RAG         → vectoriel + mots-clés combinés
 
 > [!info] Prérequis techniques
 > Pour construire un RAG : Python + LlamaIndex ou LangChain + une vector database (Chroma pour débuter).
+
+## RAG ou fine-tuning ?
+
+Une confusion fréquente consiste à opposer RAG et fine-tuning comme deux solutions interchangeables au même problème — ce n'est pas le cas : le RAG injecte du contexte à la volée à chaque requête (données à jour, aucun réentraînement), tandis que le fine-tuning modifie durablement les poids du modèle (utile pour un style ou un format de sortie, pas pour des faits qui changent souvent). Voir [[FT 02 — Quand fine-tuner vs autres approches]] pour l'arbre de décision complet et les cas d'usage de chaque approche.

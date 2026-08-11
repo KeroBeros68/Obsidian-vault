@@ -120,7 +120,7 @@ Sécurité      : Audit trail complet, RBAC, chiffrement
 
 ## LiteLLM — le proxy universel
 
-LiteLLM permet d'utiliser la même interface pour tous les LLM. Très utile pour changer de fournisseur sans toucher au code applicatif.
+LiteLLM permet d'utiliser la même interface pour tous les LLM. Très utile pour changer de fournisseur sans toucher au code applicatif. Voir [[LiteLLM — Index des fiches]] pour un module dédié (streaming, historique de conversation, gestion des erreurs).
 
 ```python
 from litellm import completion

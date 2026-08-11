@@ -3,7 +3,7 @@
 ## Qu'est-ce que le MCP ?
 
 MCP = **Model Context Protocol**
-Protocole open-source créé par Anthropic en novembre 2024 pour standardiser la façon dont les LLM se connectent aux outils et données externes.
+Protocole open-source créé par Anthropic, annoncé le 25 novembre 2024, pour standardiser la façon dont les LLM se connectent aux outils et données externes.
 
 ## Le problème qu'il résout
 

@@ -18,7 +18,10 @@
 | **Apprentissage supervisé** | Type de ML où le modèle apprend à partir de données étiquetées (exemple : email = spam ou non-spam). |
 | **Apprentissage non supervisé** | Type de ML où le modèle trouve lui-même des structures dans des données sans étiquettes. |
 | **Apprentissage par renforcement** | Type de ML où le modèle apprend par essai/erreur en recevant des récompenses ou des pénalités. |
+| **Zero-shot prompting** | Demander une réponse sans fournir d'exemple — le choix par défaut pour une tâche simple. |
+| **One-shot prompting** | Fournir un seul exemple dans le prompt pour cadrer le format ou le ton attendu. |
 | **Few-shot prompting** | Technique consistant à fournir 2-3 exemples dans le prompt pour que l'IA reproduise le pattern souhaité. |
-| **Chain of Thought** | Technique demandant à l'IA de raisonner étape par étape avant de répondre, pour améliorer la précision. |
+| **Chain of Thought** | Technique demandant à l'IA de raisonner étape par étape avant de répondre, pour améliorer la précision. Formalisée par Wei et al. (2022). |
+| **Self-Consistency** | Générer plusieurs réponses (Chain of Thought à température non nulle) et retenir la plus fréquente par vote majoritaire — plus fiable qu'une seule réponse, mais coûte N fois plus cher. |
 | **API** | Interface permettant à des développeurs d'intégrer les capacités d'un modèle IA dans leurs propres applications. |
 | **Temperature** | Paramètre contrôlant le degré de créativité vs précision de la réponse. Basse = déterministe, haute = créatif. |

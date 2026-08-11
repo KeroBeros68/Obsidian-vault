@@ -13,7 +13,7 @@ pip install "dspy[all]"
 
 ## Configurer le LM
 
-DSPy utilise LiteLLM sous le capot — il supporte nativement tous les providers.
+DSPy utilise LiteLLM sous le capot — il supporte nativement tous les providers. Voir [[LiteLLM — Index des fiches]] pour l'API `completion()` sous-jacente utilisée indépendamment de DSPy.
 
 ```python
 import dspy
@@ -33,6 +33,7 @@ dspy.configure(lm=lm)
 # ── Modèle local via Ollama ───────────────────────────────
 lm = dspy.LM("ollama/mistral", api_base="http://localhost:11434")
 dspy.configure(lm=lm)
+# Voir [[Ollama — Index des fiches]] pour l'installation et le choix du modèle
 
 # ── Modèle local via vLLM ─────────────────────────────────
 lm = dspy.LM("openai/Qwen/Qwen3-8B", api_base="http://localhost:8000/v1", api_key="no-key")

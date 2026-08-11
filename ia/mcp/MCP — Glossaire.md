@@ -23,3 +23,5 @@
 | **modelcontextprotocol/servers** | Dépôt GitHub officiel des serveurs MCP maintenus par Anthropic (filesystem, GitHub, PostgreSQL, Slack, etc.). |
 | **Tool poisoning** | Attaque de sécurité où un serveur MCP malveillant expose des Tools avec des descriptions trompeuses pour manipuler le LLM. |
 | **Least privilege (MCP)** | Principe de sécurité : ne connecter que les serveurs MCP dont l'agent a réellement besoin, avec les permissions minimales. |
+| **Patch management (MCP)** | Suivi et mise à jour réguliers des serveurs MCP installés — même un serveur officiel peut recevoir un correctif de sécurité après la découverte d'une CVE. |
+| **Egress contrôlé** | Restriction des appels réseau sortants qu'un serveur MCP peut effectuer, pour limiter l'impact d'une faille encore inconnue au moment de l'installation. |

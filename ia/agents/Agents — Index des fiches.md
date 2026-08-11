@@ -33,3 +33,5 @@
 - [[LangChain — Index des fiches]] ← suite : implémentation concrète (LangGraph, agents ReAct)
 - [[Fine-tuning — Index des fiches]] ← suite logique
 - [[IA — Home]] ← retour module IA
+- [[PydanticAI — Index des fiches]] ← suite : framework à sortie typée, injection de dépendances et retries automatiques
+- [[Manques]] → smolagents et OpenAI Agents SDK (frameworks d'agents cités dans le panorama 2026 de la source, voir tableau dans [[Agents 07 — LangChain et LangGraph]]) et Chainlit (interface de chat pour exposer un agent) — non encore couverts dans ce vault

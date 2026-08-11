@@ -97,6 +97,9 @@ snapshot_download("mistralai/Mistral-7B-Instruct-v0.3", local_dir="./mistral-7b"
 # ~/.cache/huggingface/hub/
 ```
 
+> [!warning] "You are trying to access a gated model" : deux étapes, pas une seule
+> Certains modèles (Llama, Mistral...) exigent d'accepter leur licence sur la page du modèle sur huggingface.co **en plus** de la connexion (`login()` ou `huggingface-cli login`). Se connecter sans avoir accepté la licence sur la page du modèle produit la même erreur — les deux étapes sont indépendantes et toutes deux nécessaires.
+
 ## Les grandes familles de modèles sur le Hub
 
 ```
@@ -147,3 +150,6 @@ llm  = HuggingFacePipeline(pipeline=pipe)
 
 > [!info] PyTorch vs TensorFlow
 > Hugging Face supporte PyTorch et TensorFlow. Dans la pratique, **95% de l'écosystème MLOps utilise PyTorch**. Toutes les fiches de ce module supposent PyTorch.
+
+> [!tip] Comprendre ce que la librairie charge
+> `AutoModelForCausalLM.from_pretrained(...)` instancie une architecture Transformer complète (embeddings, blocs d'attention empilés, couche de sortie). Voir [[TR 01 — L'architecture Transformer & le mécanisme d'attention]] pour ce que ces quelques lignes construisent réellement.

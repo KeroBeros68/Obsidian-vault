@@ -79,6 +79,9 @@ Chemin C ──→ Résultat C (score: 5/10)
 
 **Quand utiliser** : problèmes d'optimisation, recherche de la meilleure solution parmi plusieurs approches. Coûteux en tokens.
 
+> [!info] LATS vs Tree-of-Thought (ToT)
+> Les deux explorent plusieurs branches de raisonnement en parallèle avant de choisir la meilleure — la différence est que ToT reste une technique de *prompting pur* (le modèle génère et note plusieurs approches en un ou quelques appels, sans agir sur un environnement réel), alors que LATS combine cette exploration arborescente avec de vraies actions d'agent et leurs retours (outils, observations) à chaque nœud de l'arbre. En pratique, un ToT simplifié tient souvent dans un seul prompt qui demande au modèle de générer 3 approches, les noter, puis trancher — utile pour un problème de décision qui ne nécessite pas d'outils externes.
+
 ---
 
 ## Pattern 5 — Human in the Loop

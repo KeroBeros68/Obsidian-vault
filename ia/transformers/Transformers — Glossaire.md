@@ -39,10 +39,27 @@
 | **NF4** | NormalFloat4. Type de quantification 4-bit recommandé par BitsAndBytes pour le QLoRA. |
 | **GPTQ** | Quantification post-entraînement calibrée sur un dataset. Meilleure qualité que BnB en inférence. |
 | **AWQ** | Activation-Aware Weight Quantization. Protège les poids les plus importants. Meilleure qualité + vitesse. |
+| **GGUF** | Format de quantification de l'écosystème llama.cpp/Ollama, ciblant le CPU et les configurations hybrides — distinct de BitsAndBytes/GPTQ/AWQ qui ciblent tous un chargement GPU via `transformers`. |
+| **FP8** | Format de quantification 8 bits à virgule flottante, pris en charge nativement par les GPU récents — qualité proche du 16 bits pour la moitié de la taille, sans calibration. |
 | **Flash Attention 2** | Réimplémentation CUDA du mécanisme d'attention. 2-4× plus rapide, -80% VRAM pour l'attention. |
 | **torch.compile** | Compilation JIT du graphe PyTorch. +10-50% vitesse selon le mode et le modèle. |
-| **KV cache** | Cache des clés et valeurs d'attention des tokens précédents. Essentiel pour la vitesse de génération. |
+| **KV cache** | Cache des clés et valeurs d'attention des tokens précédents. Essentiel pour la vitesse de génération : évite de recalculer l'analyse de tout le texte déjà traité à chaque nouveau token, au prix d'une mémoire qui grandit avec la longueur de la conversation. |
 | **TGI** | Text Generation Inference. Serveur d'inférence optimisé de HuggingFace. API OpenAI-compatible. |
 | **Continuous batching** | Technique TGI qui groupe dynamiquement les requêtes pour maximiser l'utilisation GPU. |
+| **Batching statique** | Forme un lot de requêtes, attend qu'elles soient toutes terminées avant le lot suivant — laisse le GPU traiter des places vides si les réponses ont des longueurs très différentes. |
+| **Prefill** | Phase de traitement du prompt d'entrée en une seule passe — sature le calcul GPU, contrairement au decode. |
+| **Decode** | Phase de génération des tokens de sortie un par un — limitée par la bande passante mémoire (déplacement des poids), pas par le calcul, d'où la sous-utilisation du GPU sur une requête isolée. |
+| **PagedAttention** | Gestion du KV cache par pages de taille fixe allouées à la demande (à la manière de la mémoire virtuelle d'un OS), plutôt que par un gros bloc réservé au pire cas — laisse tenir bien plus de requêtes simultanées en VRAM. |
+| **RadixAttention** | Optimisation (SGLang) indexant les préfixes de texte déjà calculés pour réutiliser leur KV cache entre requêtes partageant un même début (system prompt, historique de conversation, contexte RAG). |
+| **Tensor parallelism** | Répartition d'un modèle trop volumineux pour un seul GPU sur plusieurs cartes, qui calculent chacune leur part puis échangent leurs résultats — réglage exposé sous un nom comme `tensor-parallel-size`. |
+| **Débit (throughput)** | Nombre total de tokens produits par seconde par un serveur d'inférence — s'améliore avec des lots plus remplis, au prix d'une latence par requête plus élevée. |
+| **Latence** | Temps que met une seule requête à être traitée du début à la fin — ce que ressent un utilisateur isolé, par opposition au débit qui intéresse l'exploitant du service. |
+| **TTFT (Time To First Token)** | Délai avant le premier token de la réponse — correspond à la durée du prefill, le « blanc » perçu après avoir envoyé une requête. |
+| **TPOT (Time Per Output Token)** | Temps entre deux tokens consécutifs une fois la génération lancée — correspond à la cadence du decode, perçue comme la fluidité du texte qui se déroule. |
+| **SGLang** | Serveur d'inférence LLM (comme vLLM ou TGI), qui introduit RadixAttention pour la réutilisation de préfixes partagés entre requêtes. |
 | **gradient_checkpointing** | Technique qui recalcule les activations pendant le backward pass pour économiser la VRAM. |
 | **mixed precision** | Entraînement en fp16 ou bfloat16. Réduit la VRAM de 50%, souvent sans perte de qualité. |
+| **Self-attention** | Mécanisme calculant, pour chaque token, un score de pertinence vis-à-vis de tous les autres tokens de la séquence — la brique centrale de l'architecture Transformer. |
+| **Query / Key / Value (Q/K/V)** | Les trois vecteurs dérivés de chaque token pour le calcul d'attention : Query (ce qu'il cherche), Key (ce qu'il propose), Value (le contenu transmis si jugé pertinent). |
+| **Multi-head attention** | Plusieurs calculs d'attention exécutés en parallèle (« têtes »), chacun se spécialisant dans un type de relation différent (grammaticale, référentielle, sémantique). |
+| **Positional encoding** | Information de position ajoutée aux embeddings avant les blocs Transformer, car le calcul d'attention seul ne distingue pas l'ordre des tokens. |

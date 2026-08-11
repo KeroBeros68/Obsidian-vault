@@ -134,6 +134,55 @@ agent.run(tâche)
 
 ---
 
+## 🪤 Piège 8 — Tester un agent uniquement via de vrais appels LLM
+
+```python
+# ❌ Chaque test dépend d'un appel réel au modèle
+def test_routage():
+    resultat = agent.run("Rembourse le client 12")
+    assert resultat["outil"] == "escalade_humaine"  # instable : le LLM peut varier
+
+# ✅ Isoler la logique déterministe, la tester sans modèle
+def choisir_outil(montant: float) -> str:
+    """Logique de routage pure, sans appel LLM."""
+    return "escalade_humaine" if montant > 100 else "rembourser"
+
+def test_routage():
+    assert choisir_outil(150) == "escalade_humaine"
+    assert choisir_outil(50) == "rembourser"
+
+# Garder un ou deux tests d'intégration avec le vrai modèle, pas davantage
+def test_agent_bout_en_bout():
+    resultat = agent.run("Rembourse le client 12 de 150€")
+    assert resultat["outil"] == "escalade_humaine"
+```
+
+> [!warning] Un test qui dépend d'un appel LLM est instable par nature
+> La sortie d'un modèle varie d'un run à l'autre, même à température basse. Extraire la logique déterministe, routage, validation, règles de sécurité, dans des fonctions pures testables sans modèle rend la suite de tests rapide et fiable. Garder seulement un ou deux tests d'intégration qui appellent le vrai LLM, pour vérifier que l'assemblage fonctionne — pas pour couvrir chaque cas.
+
+C'est aussi la logique de la **boucle elle-même** (l'orchestrateur, pas les règles métier) qui gagne à être testée sans modèle : on remplace `appeler_llm` par un scénario scripté et on vérifie que la boucle enchaîne bien les tours et s'arrête au bon moment.
+
+```python
+def llm_scripte(scenario):
+    """Simule appeler_llm : renvoie les messages du scénario un par un."""
+    it = iter(scenario)
+    return lambda memoire: next(it)
+
+def test_boucle_s_arrete_apres_un_outil():
+    scenario = [
+        {"tool_calls": [{"function": {"name": "addition", "arguments": {"a": 1, "b": 2}}}]},
+        {"content": "Le résultat est 3.", "tool_calls": None},  # plus d'outil → arrêt
+    ]
+    reponse, trace = agent("1 + 2 ?", appeler_llm=llm_scripte(scenario))
+    assert reponse == "Le résultat est 3."
+    assert len(trace) == 1
+```
+
+> [!tip] Le réel prouve que l'agent marche, le simulé prouve que la boucle est correcte
+> Un test contre le vrai modèle vérifie qu'il choisit le bon outil sur une vraie question — mais ne peut pas prouver que la boucle gère correctement l'enchaînement de plusieurs tours, un outil qui échoue, ou l'arrêt au bon moment : ces cas précis dépendraient d'un aléa non reproductible. Un LLM scripté rend ces scénarios déterministes et donc testables.
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -145,3 +194,4 @@ agent.run(tâche)
 | Erreurs d'outils non gérées | Try/catch + message d'erreur actionnable |
 | Context window saturée | Résumé périodique de l'historique |
 | Pas de traçabilité | LangSmith, Langfuse, ou logs custom |
+| Tests 100% dépendants du LLM | Isoler la logique déterministe, 1-2 tests d'intégration max |

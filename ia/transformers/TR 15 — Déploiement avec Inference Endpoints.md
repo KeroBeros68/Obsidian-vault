@@ -213,4 +213,4 @@ demo.launch(server_port=7860, share=False)
 > En développement, `pipeline()` est plus simple. En production, TGI offre des optimisations importantes : continuous batching, paged attention, tensor parallelism. Le passage de l'un à l'autre est transparent via l'API OpenAI-compatible.
 
 > [!info] Continuous batching
-> TGI implémente le continuous batching : au lieu de traiter les requêtes une par une, il les groupe dynamiquement pour maximiser l'utilisation GPU. Sur un GPU A100, le throughput peut être 3-10× supérieur à un simple serving PyTorch.
+> TGI implémente le continuous batching : au lieu de traiter les requêtes une par une, il les groupe dynamiquement pour maximiser l'utilisation GPU. Sur un GPU A100, le throughput peut être 3-10× supérieur à un simple serving PyTorch. Le mécanisme complet — continuous batching, PagedAttention, RadixAttention, tensor parallelism, et le compromis débit/latence qui en découle — est détaillé dans [[TR 16 — Servir un LLM à plusieurs utilisateurs (batching, PagedAttention, RadixAttention)]].

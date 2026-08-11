@@ -33,8 +33,12 @@
 | **StateGraph** | Classe LangGraph pour construire un graphe d'états. Chaque nœud est une fonction qui modifie l'état. |
 | **AgentState** | TypedDict qui définit la structure de l'état partagé entre les nœuds d'un graphe LangGraph. |
 | **create_react_agent** | Factory LangGraph qui construit un agent ReAct standard (LLM → outils → LLM...). |
+| **Checkpointer** | Composant LangGraph qui persiste l'état du graphe à chaque étape — condition indispensable pour reprendre une exécution ou utiliser `interrupt()`. `MemorySaver`/`InMemorySaver` pour un lab, `SqliteSaver`/`PostgresSaver` en production. |
 | **MemorySaver** | Checkpointer LangGraph qui sauvegarde l'état en mémoire entre les nœuds. |
 | **thread_id** | Identifiant de session pour les graphes LangGraph avec checkpointer. Même thread_id = même fil de conversation. |
+| **interrupt()** | Fonction LangGraph appelée dans un nœud pour suspendre l'exécution du graphe, sauvegarder son état via le checkpointer, et rendre la main à l'appelant — le mécanisme de human-in-the-loop natif de LangGraph. |
+| **`__interrupt__`** | Clé présente dans le résultat d'un `invoke()` interrompu, contenant la charge utile transmise à `interrupt()` — de quoi présenter la décision à valider à un opérateur. |
+| **Command(resume=...)** | Objet passé au second `invoke()` pour reprendre un graphe suspendu par `interrupt()` — sa valeur devient la valeur de retour de l'appel `interrupt()` dans le nœud. |
 | **LangSmith** | Plateforme d'observabilité pour LangChain. Enregistre traces, métriques et évaluations. |
 | **@traceable** | Décorateur LangSmith pour tracer manuellement une fonction Python dans les traces. |
 | **LangServe** | Librairie qui expose n'importe quelle chain LangChain en API REST avec streaming intégré. |

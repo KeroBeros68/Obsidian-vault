@@ -155,7 +155,9 @@ import json
 
 def nettoyer_dataset(fichier_jsonl: str) -> list:
     exemples_propres = []
+    vus = set()
     erreurs = 0
+    doublons = 0
     
     with open(fichier_jsonl) as f:
         for i, ligne in enumerate(f):
@@ -165,6 +167,13 @@ def nettoyer_dataset(fichier_jsonl: str) -> list:
                 # Vérifications de base
                 assert "messages" in exemple
                 assert len(exemple["messages"]) >= 2
+                
+                # Déduplication (un exemple répété biaise l'apprentissage)
+                empreinte = json.dumps(exemple["messages"], sort_keys=True)
+                if empreinte in vus:
+                    doublons += 1
+                    continue
+                vus.add(empreinte)
                 
                 # Vérifier la longueur (éviter les exemples trop courts ou trop longs)
                 réponse = exemple["messages"][-1]["content"]
@@ -180,7 +189,7 @@ def nettoyer_dataset(fichier_jsonl: str) -> list:
                 erreurs += 1
                 print(f"Ligne {i+1} invalide : {e}")
     
-    print(f"{len(exemples_propres)} exemples valides, {erreurs} erreurs")
+    print(f"{len(exemples_propres)} exemples valides, {doublons} doublons retirés, {erreurs} erreurs")
     return exemples_propres
 
 # Séparation train/validation
@@ -193,3 +202,6 @@ validation = exemples_propres[seuil:]  # 10% pour la validation
 
 > [!warning] Sépare toujours train et validation
 > Le dataset de validation ne doit jamais être vu pendant l'entraînement. C'est lui qui mesure si le modèle généralise vraiment ou s'il a juste mémorisé le training set.
+
+> [!tip] Un doublon n'est pas neutre
+> Un exemple répété plusieurs fois dans le dataset n'apporte aucune information supplémentaire, mais fait pencher l'entraînement vers ce pattern précis — un déséquilibre silencieux qui passe facilement inaperçu sur un gros dataset non vérifié. Dédupliquer avant l'entraînement, pas après avoir constaté un comportement bizarre.

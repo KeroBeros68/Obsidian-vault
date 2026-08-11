@@ -104,6 +104,9 @@ Alternatives économiques :
   Hugging Face TGI  : self-hosted, pay as you go
 ```
 
+> [!info] Dimensionner le matériel nécessaire pour Ollama
+> Voir [[Ollama 01 — Prérequis matériels]] pour les tableaux RAM/VRAM selon la taille du modèle avant d'estimer le coût réel d'un déploiement local.
+
 ## Infrastructure recommandée par cas d'usage
 
 ### Cas 1 — Prototype / Validation (< $100)
@@ -130,6 +133,16 @@ Déploiement  : AWS Bedrock, Azure OpenAI, ou cluster GPU propre
 Monitoring   : LangSmith + Datadog
 ```
 
+## Deux risques souvent oubliés
+
+Au-delà du coût GPU, deux points méritent l'attention de tout ingénieur avant de lancer un fine-tuning en production.
+
+> [!warning] Fuite de données d'entraînement
+> Un modèle fine-tuné peut restituer, mot pour mot, des exemples de son dataset d'entraînement — un risque direct si ce dataset contient des données sensibles (informations clients, secrets internes). Voir [[LLMOps 08 — Sécurité et guardrails en production]] pour les mécanismes de guardrails applicables en sortie, qui restent une protection complémentaire et non un substitut à un dataset d'entraînement nettoyé de tout contenu sensible en amont.
+
+> [!warning] Reproductibilité : versionner dataset, seeds et hyperparamètres
+> Sans traçabilité de la version exacte du dataset, du seed aléatoire et des hyperparamètres utilisés, un résultat de fine-tuning devient impossible à rejouer ou à auditer — un problème qui ne se révèle généralement qu'au moment où il faut diagnostiquer une régression ou reproduire un bon résultat obtenu plusieurs semaines plus tôt.
+
 ## Checklist avant de commencer
 
 ```
@@ -141,6 +154,8 @@ Monitoring   : LangSmith + Datadog
 ✅ J'ai prévu un budget pour 3-5 runs (la première tentative réussit rarement)
 ✅ J'ai un plan de déploiement et de monitoring post-entraînement
 ✅ J'ai vérifié que le RAG ne suffirait pas (moins coûteux)
+✅ J'ai versionné dataset, seeds et hyperparamètres pour chaque run
+✅ J'ai vérifié l'absence de données sensibles dans le dataset d'entraînement
 ```
 
 > [!tip] Budget de contingence

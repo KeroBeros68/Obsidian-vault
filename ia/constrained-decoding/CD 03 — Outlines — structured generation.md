@@ -40,6 +40,9 @@ model = outlines.models.ollama("mistral", "http://localhost:11434")
 model = outlines.models.openai("gpt-4o-mini")
 ```
 
+> [!info] Le port 11434 est celui d'Ollama en local
+> Voir [[Ollama — Index des fiches]] pour l'installation et [[Ollama 05 — Sécurité réseau (OLLAMA_HOST & port 11434)]] avant d'exposer cette API au-delà de la machine locale.
+
 ## Type 1 — Types de base
 
 ```python

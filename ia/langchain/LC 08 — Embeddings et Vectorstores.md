@@ -92,6 +92,6 @@ vectorstore = PineconeVectorStore.from_documents(
 |---|---|---|
 | `Chroma` | Local | Simple, parfait pour débuter |
 | `FAISS` | Local | Ultra-rapide sur les grandes collections |
-| `Qdrant` | Local/Cloud | Filtres avancés, production |
+| `Qdrant` | Local/Cloud | Filtres avancés, production — voir [[Qdrant — Index des fiches]] |
 | `Pinecone` | Cloud | Managé, scalable, facile |
 | `pgvector` | PostgreSQL | Si tu as déjà Postgres |

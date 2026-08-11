@@ -1,5 +1,18 @@
 #ia #agents #langchain #langgraph #frameworks #pratique
 
+## Panorama des frameworks d'agents Python
+
+Aucun de ces frameworks ne change la boucle Reason → Act → Observe (voir [[Agents 02 — Architecture d'un agent]]) : ils l'outillent différemment (schéma des outils, gestion des erreurs, asynchrone, observabilité). Le choix dépend du besoin en typage, en multi-agents, en intégration MCP.
+
+| Framework | Positionnement | Couvert dans ce vault |
+|---|---|---|
+| **LangGraph** | Agents et workflows à état, graphe explicite, reprise sur incident | Cette fiche, [[LC 12 — LangGraph — agents avec état]] |
+| **CrewAI** | Orienté équipes d'agents coopérants, abstractions de haut niveau | [[Agents 08 — CrewAI]] |
+| **AutoGen** | Agents qui dialoguent entre eux, conversations multi-agents | [[Agents 09 — AutoGen]] |
+| **PydanticAI** | Agents typés, validation stricte des entrées/sorties, approche Python moderne | [[PydanticAI — Index des fiches]] |
+| **smolagents** | L'agent écrit du code Python plutôt que du JSON, expressif, à sandboxer | Non couvert — voir [[Manques]] |
+| **OpenAI Agents SDK** | SDK officiel d'OpenAI, simple, centré sur leur écosystème | Non couvert — voir [[Manques]] |
+
 ## LangChain et LangGraph
 
 LangChain est le framework le plus utilisé pour construire des applications LLM. LangGraph en est l'extension pour les agents avec état complexe.

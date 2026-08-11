@@ -45,6 +45,9 @@ from langchain_community.chat_models import ChatOllama
 llm = ChatOllama(model="mistral")
 ```
 
+> [!info] Installer et configurer Ollama
+> Voir [[Ollama — Index des fiches]] pour l'installation, le choix du modèle et la sécurisation de l'API locale avant de la brancher sur LangChain.
+
 ## Paramètres clés
 
 ```python
@@ -168,6 +171,8 @@ réponse = llm_avec_fallback.invoke("Bonjour !")
 ```
 
 ## LiteLLM — interface universelle
+
+Voir [[LiteLLM — Index des fiches]] pour un module dédié à `litellm.completion()` utilisée directement, sans passer par l'intégration LangChain.
 
 ```python
 # Même code pour tous les LLM

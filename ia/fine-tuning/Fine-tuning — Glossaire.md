@@ -30,3 +30,5 @@
 | **Early stopping** | Arrêt de l'entraînement quand la validation loss remonte, pour éviter l'overfitting. |
 | **Unsloth** | Librairie Python qui optimise le fine-tuning LoRA/QLoRA pour utiliser moins de mémoire et aller plus vite. |
 | **vLLM** | Moteur d'inférence haute performance pour déployer des LLM open-source avec un throughput optimisé. |
+| **Fuite de données d'entraînement** | Risque qu'un modèle fine-tuné restitue mot pour mot un exemple de son dataset — critique si ce dataset contient des données sensibles. |
+| **Reproductibilité (fine-tuning)** | Capacité à rejouer un résultat d'entraînement identique, garantie par le versionnage du dataset, du seed aléatoire et des hyperparamètres utilisés pour chaque run. |

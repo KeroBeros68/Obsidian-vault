@@ -28,7 +28,7 @@
 ## Prérequis & suite
 
 - [[IA — Index des fiches]] ← comprendre les LLM et la génération
-- [[TR 05 — Génération de texte]] ← stratégies de décodage (prérequis direct)
-- [[TR 10 — PEFT et LoRA]] ← alternative : fine-tuner pour le format
+- [[TR 06 — Génération de texte]] ← stratégies de décodage (prérequis direct)
+- [[TR 11 — PEFT et LoRA]] ← alternative : fine-tuner pour le format
 - [[LLMOps 08 — Sécurité et guardrails en production]] ← guardrails complémentaires
 - [[IA — Home]] ← retour module IA

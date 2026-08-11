@@ -119,5 +119,49 @@ Classer les outils par niveau de risque et adapter les guardrails.
 > [!warning] Principe du moindre privilège
 > Ne donner à l'agent que les outils dont il a réellement besoin. Un agent avec trop d'outils fait plus d'erreurs et est plus difficile à déboguer.
 
+> [!warning] Les secrets vivent hors du code des outils
+> Un outil qui appelle une API (CRM, email, base de données) a besoin de clés ou de mots de passe — jamais en clair dans le code de l'outil, jamais commités dans Git. Ils vivent dans des variables d'environnement ou un gestionnaire de secrets dédié. Voir [[Secrets 01 — Le problème des secrets en clair]] et [[Secrets — Index des fiches]] pour les mécanismes.
+
 > [!tip] Commencer simple
 > Commence avec 2-3 outils max. Ajoute des outils seulement quand l'agent en a clairement besoin. Un agent avec 15 outils est souvent moins efficace qu'un agent avec 4 outils bien définis.
+
+## Le LLM ne "fait" jamais l'appel, il génère du JSON à valider
+
+Le LLM ne se connecte jamais réellement à une API ni n'exécute de code : il génère un texte structuré (JSON) qui décrit quel outil appeler et avec quels paramètres. C'est le code de l'application qui reçoit ce JSON, doit le **valider**, puis l'exécuter réellement.
+
+> [!tip] Le même modèle Pydantic sert deux fois
+> Plutôt qu'écrire à la main le schéma JSON envoyé au modèle et séparément la logique de validation, un seul modèle Pydantic peut produire les deux : `MesArgs.model_json_schema()` génère le schéma décrit au LLM, et `MesArgs(**arguments)` valide ce qu'il renvoie. Les deux restent alors automatiquement synchronisés — voir [[LiteLLM 06 — Function calling et outils]] pour l'exemple complet, schéma généré, validation, gestion des trois pannes réelles (JSON cassé, argument manquant, outil inconnu).
+
+```python
+# Le LLM génère ceci (une proposition d'appel, pas une exécution) :
+# {"name": "envoyer_email", "arguments": {"destinataire": "'; DROP TABLE users;--", "sujet": "..."}}
+
+# ❌ Exécuter directement sans validation
+appeler_outil(nom, arguments)
+
+# ✅ Valider le schéma avant toute exécution
+from pydantic import BaseModel, EmailStr
+
+class EnvoyerEmailArgs(BaseModel):
+    destinataire: EmailStr
+    sujet: str
+    corps: str
+
+try:
+    args_valides = EnvoyerEmailArgs(**arguments)
+    appeler_outil(nom, args_valides)
+except ValidationError as e:
+    # Retourner une erreur exploitable par le LLM, pas un crash
+    return f"Appel invalide : {e}. Réessaie avec un destinataire valide."
+```
+
+> [!warning] Un LLM peut générer un appel malformé, jamais malveillant "exprès" — mais l'effet est le même
+> Le LLM ne cherche pas activement à attaquer le système, mais rien ne garantit que le JSON généré respecte le schéma attendu (type incorrect, champ manquant, valeur hors énumération) — et un contenu extérieur injecté dans le contexte (voir le *Tool Poisoning*, [[MCP — Pièges classiques]]) peut aussi pousser le LLM à générer un appel dangereux. Valider systématiquement (Pydantic, JSON Schema, ou équivalent) avant d'exécuter quoi que ce soit, et renvoyer une erreur typée et compréhensible plutôt qu'un crash — ce contrat d'interface est la base de tout *structured output* fiable.
+
+> [!tip] Même un type simple peut arriver déformé
+> Un modèle renvoie parfois un nombre sous forme de chaîne (`"23"` au lieu de `23`) malgré un schéma qui déclare `number` — sans que ce soit une attaque, juste une imprécision de génération. Un outil qui prend des paramètres numériques a intérêt à coercer explicitement (`float(a)`, `int(b)`) plutôt que de faire confiance aveuglément au type déclaré :
+> ```python
+> def addition(a: float, b: float) -> float:
+>     """Additionne deux nombres."""
+>     return float(a) + float(b)  # coercion défensive, même si le schéma promet déjà un nombre
+> ```

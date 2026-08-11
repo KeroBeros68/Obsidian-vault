@@ -1,8 +1,11 @@
-#ia #transformers #quantification #bitsandbytes #gptq #awq #optimisation #avancé
+#ia #transformers #quantification #bitsandbytes #gptq #awq #gguf #optimisation #avancé
 
-## Quantification — BitsAndBytes, GPTQ, AWQ
+## Quantification — BitsAndBytes, GPTQ, AWQ, GGUF
 
 La quantification réduit la précision numérique des poids du modèle (float32 → int8 ou int4), réduisant drastiquement la VRAM nécessaire avec une perte de qualité minimale.
+
+> [!info] Le calcul qui explique la taille d'un modèle
+> Un modèle est une collection de paramètres, chacun stocké sur un nombre de bits donné — `taille = nombre de paramètres × place occupée par paramètre`. Un modèle de 14 milliards de paramètres en 16 bits (2 octets chacun) pèse environ 28 Go ; requantifié en 4 bits (0,5 octet), il tombe à 7-9 Go. C'est ce même calcul qui explique les chiffres du tableau ci-dessous pour Mistral 7B.
 
 ## Pourquoi quantifier ?
 
@@ -136,6 +139,37 @@ model.save_quantized("./mistral_awq_4bit")
 tokenizer.save_pretrained("./mistral_awq_4bit")
 ```
 
+## GGUF : le format de l'inférence locale CPU/hybride
+
+BitsAndBytes, GPTQ et AWQ ciblent tous un chargement via la librairie `transformers`, sur GPU. **GGUF** répond à un besoin différent : c'est le format de l'écosystème **llama.cpp** et **Ollama** (voir [[Ollama — Index des fiches]]), pensé pour le CPU et les configurations hybrides CPU/GPU plutôt que pour un GPU dédié.
+
+```bash
+# Un modèle GGUF se télécharge directement, sans code Python
+ollama pull llama3.2          # Récupère un GGUF pré-quantifié
+```
+
+> [!info] Décoder un nom comme Q4_K_M
+> Les variantes GGUF portent des noms tels que `Q4_K_M` ou `Q5_K_M` : le chiffre indique le nombre de bits (4, 5, 8...), les lettres qui suivent une variante de la méthode de regroupement des poids. Voir [[Ollama 03 — Télécharger et gérer des modèles]] et [[Ollama 01 — Prérequis matériels]] pour le dimensionnement RAM/VRAM associé à chaque variante.
+
+## FP8 : le format récent pour GPU modernes
+
+**FP8** est un format 8 bits « à virgule flottante » (par opposition aux formats entiers INT8), pris en charge nativement par les GPU récents (NVIDIA Hopper et plus récents). Il offre un compromis particulièrement favorable : une qualité proche du 16 bits pour la moitié de la taille, sans phase de calibration comme GPTQ/AWQ.
+
+| Format | Bits | Cible | Écosystème |
+|--------|------|-------|-------------|
+| **GGUF** | 2 à 8 bits | CPU, hybride | llama.cpp, Ollama |
+| **AWQ** | 4 bits | GPU | vLLM, SGLang |
+| **GPTQ** | 4 bits | GPU | vLLM, SGLang |
+| **FP8** | 8 bits | GPU récent | vLLM, SGLang |
+
+## Quantifier ou s'abstenir : une décision, pas un réflexe
+
+> [!tip] Quand quantifier
+> Le modèle ne tient pas dans la mémoire disponible (le cas le plus fréquent), ou l'objectif est d'accélérer l'inférence / réduire les coûts matériels en acceptant une perte de qualité minime. Une quantification 4 bits moderne (AWQ, GPTQ, ou GGUF Q4_K_M) est un bon point de départ par défaut pour de l'inférence.
+
+> [!warning] Quand s'abstenir
+> Toute la mémoire nécessaire est disponible et l'objectif est la qualité maximale absolue (une évaluation de référence, par exemple) — ou le modèle est destiné à être **fine-tuné** par la suite : le ré-entraînement réclame la précision complète, quantifier avant de fine-tuner (au-delà du cas spécifique de QLoRA, conçu pour ça) dégrade inutilement le point de départ.
+
 ## Comparaison des méthodes de quantification
 
 | Méthode | VRAM 7B | Qualité | Vitesse inférence | Usage recommandé |
@@ -162,6 +196,9 @@ Inférence production :
 
 Trop peu de VRAM :
   → AWQ 4-bit + vLLM + fuse_layers=True
+
+Pas de GPU dédié, usage local (CPU ou hybride) :
+  → GGUF + llama.cpp ou Ollama (voir [[Ollama — Index des fiches]])
 ```
 
 ## Vérifier la VRAM utilisée

@@ -113,6 +113,26 @@ for i in range(résultats_idx.shape[1]):
     print(f"Index {idx} | Score {score:.3f} | {texte[:60]}")
 ```
 
+## Le tokenizer par défaut casse les identifiants avec tiret
+
+`bm25s.tokenize()` utilise par défaut le motif `\b\w\w+\b`, qui ne considère pas le tiret comme un caractère de mot — un identifiant technique comme `--volumes-from` ou un code d'erreur `E-4042` est donc découpé en fragments séparés (`volumes`, `from`) plutôt que conservé comme un seul token exact.
+
+> [!warning] Sur de la documentation technique, ce découpage fait perdre l'exactitude
+> BM25 excelle précisément sur les termes exacts (identifiants, options de ligne de commande, codes d'erreur) — c'est son avantage sur la recherche dense, qui dilue ces termes rares dans le sens général de la phrase (voir [[RAG 08 — Hybrid RAG]]). Si le tokenizer par défaut fragmente ces identifiants, cet avantage disparaît silencieusement, sans erreur visible.
+
+```python
+import re
+
+def splitter_technique(texte: str) -> list[str]:
+    """Tokenise en conservant les identifiants avec tiret intacts."""
+    return re.findall(r"[\w\-]+", texte.lower())
+
+corpus_tokenisé = bm25s.tokenize(corpus, splitter=splitter_technique)
+```
+
+> [!tip] Le paramètre `splitter` accepte une regex ou une fonction
+> `bm25s.tokenize(..., splitter=...)` accepte soit une chaîne interprétée comme motif regex, soit une fonction personnalisée — sur un corpus riche en identifiants techniques, tester explicitement qu'une requête contenant l'identifiant exact retrouve bien le bon document est le meilleur moyen de détecter ce piège avant qu'il n'affecte la production.
+
 ## Paramètres BM25 ajustables
 
 ```python

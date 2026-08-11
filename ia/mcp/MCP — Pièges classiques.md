@@ -185,6 +185,20 @@ async def call_tool(name: str, arguments: dict):
 
 ---
 
+## 🪤 Piège 8 — Un serveur MCP "officiel" mais jamais mis à jour
+
+```
+"C'est le serveur officiel d'Anthropic/GitHub/etc., pas besoin de le surveiller"
+```
+
+> [!warning] Même les serveurs officiels ont des CVE
+> En 2025, trois vulnérabilités (CVE-2025-68143, CVE-2025-68144, CVE-2025-68145) ont été découvertes dans `mcp-server-git`, le serveur Git officiel maintenu par Anthropic : un `git_init` acceptant n'importe quel chemin du système de fichiers, un contournement de la liste blanche de dépôts autorisés, et une injection d'arguments dans `git_diff` permettant d'écraser des fichiers arbitraires — toutes exploitables via une simple injection de prompt (un README ou une issue piégée, sans accès direct à la machine de la victime). Anthropic a corrigé les trois failles en décembre 2025 (version 2025.12.18). "Officiel" ne veut pas dire "sans faille" — traiter le patch management des serveurs MCP comme celui de n'importe quelle dépendance logicielle exposée au réseau.
+
+> [!tip] Compléter le vetting de la source par un contrôle réseau
+> Vérifier la provenance d'un serveur (voir Piège 5) protège contre un serveur malveillant dès l'installation, mais pas contre une faille découverte après coup dans un serveur légitime. Deux mesures complémentaires : une **allowlist explicite** des chemins/ressources qu'un serveur peut réellement toucher (au-delà de ce que le serveur lui-même prétend respecter), et un **contrôle des appels réseau sortants** (egress) du processus serveur, pour limiter l'impact d'une faille encore inconnue.
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -196,3 +210,4 @@ async def call_tool(name: str, arguments: dict):
 | Tool Poisoning | Serveurs officiels ou code source audité uniquement |
 | Actions irréversibles sans confirmation | Mécanisme de confirmation à 2 étapes |
 | Pas de logs en production | Logger chaque appel (nom, params, résultat) |
+| Serveur "officiel" jamais mis à jour | Patch management + allowlist + egress contrôlé |

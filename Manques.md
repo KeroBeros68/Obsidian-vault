@@ -55,6 +55,24 @@ Ces modules ne créent pas de liens morts mais représentent des **continuations
 - **Contenu attendu :** `VectorStoreIndex`, `QueryEngine`, node parsers, retrievers, agents LlamaIndex, `RouterQueryEngine`, comparaison architecturale avec LangChain
 - **Parcours :** RAG → BM25S → LangChain → **LlamaIndex**
 
+### Letta (MemGPT)
+- **Contexte :** Mem0 est couvert en profondeur dans `ia/agents/Agents 04 — Mémoire et état.md` (config, `add`/`search`, persistance Qdrant) ; Letta est le second framework de mémoire d'agent cité par la source, mais seulement mentionné en un paragraphe — pas assez de contenu source pour justifier un module dédié sans fabriquer
+- **Mentions via `[[Manques]]` dans :** Agents 04 — Mémoire et état
+- **Contenu attendu :** gestion hiérarchique de la mémoire inspirée d'un OS (contexte actif vs archivé), auto-gestion par l'agent de ce qu'il garde/archive, comparaison pratique avec Mem0
+- **Parcours :** Agents 04 (Mem0) → **Letta**
+
+### smolagents, OpenAI Agents SDK
+- **Contexte :** LangGraph, CrewAI, AutoGen et désormais PydanticAI sont couverts (`ia/agents/` 07-09, `ia/pydanticai/`) ; ces deux frameworks complètent le panorama 2026 des agents Python cité par la source (blog.stephane-robert.info) mais n'ont pas de guide dédié fourni
+- **Mentions via `[[Manques]]` dans :** Agents — Index des fiches ; Agents 07 — LangChain et LangGraph (tableau panorama)
+- **Contenu attendu :** smolagents — agent qui écrit du code Python exécutable plutôt que du JSON, sandboxing ; OpenAI Agents SDK — SDK officiel OpenAI
+- **Parcours :** Agents 01-06 → Agents 07-09 → PydanticAI → **smolagents / OpenAI Agents SDK**
+
+### Chainlit
+- **Contexte :** aucune fiche du vault ne couvre l'exposition d'un agent derrière une interface de chat web — les modules Agents et LangChain s'arrêtent à la logique
+- **Mentions via `[[Manques]]` dans :** Agents — Index des fiches
+- **Contenu attendu :** interface de chat Python, séparation logique agent / interface (voir [[Agents 02 — Architecture d'un agent]]), authentification, streaming de la réponse
+- **Parcours :** Agents 01-07 → **Chainlit**
+
 ### Makefile & build C
 - **Contexte :** Bases C 01 couvre `gcc` seul — tout projet C multi-fichier réel nécessite make ; absence bloquante pour Posix et Pthread (projets système)
 - **Contenu attendu :** règles explicites/implicites, variables (`CC`, `CFLAGS`, `LDFLAGS`, `LIBS`), phony targets, compilation séparée (`.o`), librairies statiques (`.a`) et dynamiques (`.so`)
@@ -115,6 +133,9 @@ Modules référencés dans des index comme suites avancées, ou prérequis pour 
 | Programmation dynamique        | 🟡 P3    | 4e pilier algo après Tri + Arbres + Graphes                  |
 | Flux dans les réseaux          | 🟡 P3    | 1 lien mort (Graphes — Index), Ford-Fulkerson                |
 | LlamaIndex                     | 🟡 P3    | 2e framework RAG/agents, complément LangChain                |
+| Letta (MemGPT)                 | 🟡 P3    | mentionné via [[Manques]] (Agents 04), second framework mémoire |
+| smolagents / OpenAI Agents SDK | 🟡 P3    | mentionnés via [[Manques]] (Agents — Index, Agents 07)       |
+| Chainlit                       | 🟡 P3    | mentionné via [[Manques]] (Agents — Index), interface d'agent |
 | Makefile & build C             | 🟡 P3    | projets C multi-fichiers, prérequis Posix réel               |
 | I/O fichiers en C              | 🟡 P3    | gap Bases 08 → Posix 04, API `FILE*`                         |
 | stdatomic C11                  | 🔵 P4    | 2 liens morts (Posix, Pthread), lock-free                    |

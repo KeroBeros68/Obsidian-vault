@@ -187,5 +187,8 @@ tokenizer = AutoTokenizer.from_pretrained("./mon_modele_sauvegardé")
 > [!tip] device_map="auto" — le paramètre magique
 > Avec `device_map="auto"`, Transformers distribue automatiquement le modèle sur tous les GPU disponibles, et met ce qui déborde en RAM CPU. Indispensable pour les grands modèles.
 
+> [!tip] low_cpu_mem_usage=True — charger progressivement plutôt que doubler la RAM
+> Sans cette option, `from_pretrained()` alloue d'abord le modèle complet en mémoire avant d'y charger les poids — un pic mémoire qui peut atteindre le double de la taille finale du modèle. `low_cpu_mem_usage=True` charge les poids progressivement, évitant ce pic, particulièrement utile en environnement contraint (CPU seul, RAM limitée).
+
 > [!warning] torch.no_grad() en inférence
 > Toujours utiliser `with torch.no_grad():` pendant l'inférence. Sans ça, PyTorch garde en mémoire tous les gradients intermédiaires — inutile en inférence et très coûteux en VRAM.

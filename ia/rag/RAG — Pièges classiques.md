@@ -92,6 +92,18 @@ Si les mauvais chunks sont récupérés, ce n'est pas un problème de LLM — c'
 
 ---
 
+## 🪤 Piège 8 — Mélanger des vecteurs de deux modèles d'embedding différents
+
+```
+❌ Corpus indexé avec all-MiniLM, puis quelques documents ajoutés avec nomic-embed-text
+→ Erreur de dimension à l'écriture, ou pire, scores de similarité incohérents sans erreur visible
+```
+
+> [!warning] Les espaces vectoriels de deux modèles ne sont pas comparables
+> La question et les documents doivent être vectorisés par exactement le même modèle, à l'indexation comme à la recherche. Changer de modèle d'embedding — même pour une version « améliorée » du même modèle — impose de réindexer l'intégralité du corpus, pas seulement les nouveaux documents. Voir [[RAG 02 — Embeddings et Vector Databases]].
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -103,3 +115,4 @@ Si les mauvais chunks sont récupérés, ce n'est pas un problème de LLM — c'
 | Index non mis à jour | Pipeline de mise à jour automatique |
 | Complexité prématurée | Naive RAG d'abord, complexifier seulement si nécessaire |
 | Questions hors périmètre | Seuil de similarité + réponse "je ne sais pas" |
+| Vecteurs de deux modèles d'embedding mélangés | Réindexer tout le corpus après tout changement de modèle |

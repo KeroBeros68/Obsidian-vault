@@ -26,6 +26,9 @@
 > [!tip] Mémo
 > L'IA ne lit pas dans tes pensées. Plus tu es précis, plus le résultat est utile. Ajoute toujours : pour qui, dans quel but, sous quel format.
 
+> [!warning] Un cas particulier : les instructions négatives
+> "Ne sois pas long" ou "Évite le jargon" décrivent ce qu'il faut éviter, pas ce qu'il faut faire — le modèle doit deviner la cible. Reformule toujours en critère positif et mesurable : "en 3 phrases maximum", "avec un vocabulaire accessible à un non-expert".
+
 ---
 
 ## 🪤 Piège 3 — Utiliser le mauvais outil

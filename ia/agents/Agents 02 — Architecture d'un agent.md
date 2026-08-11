@@ -98,6 +98,44 @@ Exemples de guardrails :
 > [!warning] Les guardrails sont obligatoires en production
 > Sans limites, un agent peut boucler indéfiniment, consommer des ressources excessives, ou exécuter des actions irréversibles non souhaitées.
 
+## La boucle, en Python pur
+
+Aucun framework n'est nécessaire pour comprendre le mécanisme : `json` et `urllib` de la bibliothèque standard suffisent pour faire tourner un agent complet sur un modèle local (voir [[Ollama 03 — Télécharger et gérer des modèles]]).
+
+```python
+def agent(question: str, max_tours: int = 6) -> tuple[str, list[str]]:
+    """Fait tourner la boucle Reason -> Act -> Observe jusqu'à la réponse."""
+    memoire = [
+        {"role": "system", "content": SYSTEME},
+        {"role": "user", "content": question},
+    ]
+    trace: list[str] = []
+
+    for _ in range(max_tours):
+        message = appeler_llm(memoire)      # Reason : le modèle décide
+        memoire.append(message)             # tout reste en mémoire
+
+        appels = message.get("tool_calls")
+        if not appels:                      # aucun outil → réponse finale
+            return message["content"], trace
+
+        for appel in appels:                # Act : exécuter les outils
+            nom = appel["function"]["name"]
+            arguments = appel["function"]["arguments"]
+            resultat = OUTILS[nom](**arguments)
+            trace.append(f"{nom}({arguments}) = {resultat}")
+            memoire.append(                 # Observe : résultat réinjecté
+                {"role": "tool", "tool_name": nom, "content": str(resultat)}
+            )
+
+    return "Nombre maximum de tours atteint.", trace
+```
+
+`memoire` est la Mémoire, `appeler_llm` déclenche le Reason, la boucle `for appel in appels` est l'Act, et le `memoire.append` du résultat est l'Observe. `max_tours` est le guardrail qui borne l'orchestrateur : sans lui, un agent qui n'aboutit pas tournerait, et facturerait, sans fin.
+
+> [!tip] Un framework ne change pas la boucle, il l'outille
+> LangChain, LangGraph, [[PydanticAI 00 — Qu'est-ce que PydanticAI|PydanticAI]] ou CrewAI font tous tourner, sous des abstractions différentes, exactement cette boucle Reason → Act → Observe. La comprendre une fois en Python pur permet de comprendre n'importe lequel d'entre eux — PydanticAI y ajoute surtout une sortie typée garantie et l'injection de dépendances, là où cette boucle à la main renvoie une simple chaîne de caractères.
+
 ## Le system prompt d'un agent
 
 C'est la pièce la plus importante. Il définit le comportement de l'agent.
@@ -122,3 +160,10 @@ Format de réponse : JSON avec les champs "action", "outil", "paramètres"
 
 > [!tip] La qualité du system prompt détermine 80% de la qualité de l'agent
 > Un agent mal défini dans son system prompt sera imprévisible. Soigne le rôle, les règles et surtout le format de sortie attendu.
+
+## L'agent ne connaît pas son interface
+
+Les 5 composants ci-dessus, boucle, outils, mémoire, guardrails, forment la logique de l'agent — un ensemble testable sans aucune interface utilisateur. L'interface (CLI, API REST, chat web) n'est qu'un point d'entrée qui appelle cette logique, jamais l'inverse.
+
+> [!warning] Mélanger logique et interface fige le code
+> Écrire les appels au LLM directement dans les fonctions d'une interface de chat couple les deux : impossible de tester la logique seule, impossible de changer d'interface sans toucher au comportement de l'agent. Garder la logique d'agent dans ses propres modules, appelés par l'interface plutôt qu'entremêlés avec elle, permet de la tester indépendamment et de brancher plusieurs interfaces (CLI, API, web) sur le même agent.

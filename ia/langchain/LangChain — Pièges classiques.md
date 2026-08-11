@@ -201,6 +201,40 @@ for chunk in chain.stream({"question": "..."}):
 
 ---
 
+## 🪤 Piège 10 — Compiler un graphe LangGraph sans checkpointer avant d'utiliser interrupt()
+
+```python
+# ❌ Aucun checkpointer : interrupt() n'a rien pour sauvegarder l'état
+app = graphe.compile()
+app.invoke({"ticket": "..."}, config)  # échoue dès que le nœud atteint interrupt()
+
+# ✅ Le checkpointer est la condition pour suspendre puis reprendre
+from langgraph.checkpoint.memory import InMemorySaver
+app = graphe.compile(checkpointer=InMemorySaver())
+```
+
+> [!warning] Le checkpointer n'est pas optionnel dès qu'un nœud appelle interrupt()
+> C'est lui qui sauvegarde l'état du graphe au moment de la pause et permet à un second `invoke()` avec `Command(resume=...)` de reprendre exactement là où l'exécution s'est arrêtée. Voir [[LC 12 — LangGraph — agents avec état]].
+
+---
+
+## 🪤 Piège 11 — La fonction de routage ne renvoie pas le nom exact du nœud
+
+```python
+# ❌ "Controle_Humain" ≠ le nom "controle_humain" passé à add_node
+def router(state) -> str:
+    return "Controle_Humain" if state["action"] in ACTIONS_DESTRUCTIVES else "appliquer"
+
+# ✅ La chaîne renvoyée doit correspondre exactement
+def router(state) -> str:
+    return "controle_humain" if state["action"] in ACTIONS_DESTRUCTIVES else "appliquer"
+```
+
+> [!warning] add_conditional_edges compare des chaînes, pas des intentions
+> Si la fonction de routage renvoie une chaîne qui ne correspond à aucun nom passé à `add_node`, le graphe n'atteint jamais ce nœud — sans erreur explicite au moment du routage lui-même. Vérifier que la fonction ne fait que décider (voir [[LC 12 — LangGraph — agents avec état]]) simplifie ce contrôle : une fonction courte et pure est plus facile à relire que la valeur exacte attendue.
+
+---
+
 ## Récapitulatif rapide
 
 | Piège | Solution |
@@ -214,3 +248,5 @@ for chunk in chain.stream({"question": "..."}):
 | Mauvais chunk_size | Commencer à 512/50, tester le retriever seul |
 | Pas de test par étape | Tester retriever → prompt → LLM séparément |
 | Streaming sans flush | Toujours `print(chunk, end="", flush=True)` |
+| interrupt() sans checkpointer | Toujours `compile(checkpointer=...)` |
+| Routage LangGraph vers un nœud inexistant | La fonction doit renvoyer le nom exact passé à `add_node` |

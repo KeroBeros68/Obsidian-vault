@@ -197,3 +197,60 @@ Image(app.get_graph().draw_mermaid_png())
 
 > [!info] thread_id = session
 > Le `thread_id` dans la config est l'identifiant de session. Même thread_id = même fil de conversation avec son état persistant. Différent thread_id = nouvelle conversation indépendante.
+
+## Un nœud peut renvoyer une sortie typée plutôt qu'un message
+
+Tous les nœuds ne conversent pas avec le LLM par messages : un nœud de classification peut aussi appeler `with_structured_output()` (voir [[LC 03 — LLM et Chat Models]], [[LC 04 — Output Parsers]]) pour recevoir directement une instance Pydantic validée, plutôt que de parser un `tool_call`.
+
+```python
+from typing import Literal
+from pydantic import BaseModel, Field
+
+class Analyse(BaseModel):
+    categorie: str = Field(description="Thème du ticket")
+    priorite: Literal["haute", "moyenne", "basse"]
+    action: Literal["repondre_au_client", "escalader_n2", "fermer_le_ticket"]
+
+analyseur = llm.with_structured_output(Analyse)
+
+def analyser(state: State) -> dict:
+    """Classe le ticket : catégorie, priorité et action recommandée."""
+    analyse = analyseur.invoke(state["ticket"])
+    return {"categorie": analyse.categorie, "priorite": analyse.priorite, "action": analyse.action}
+```
+
+> [!tip] `temperature=0` et des champs `Literal` rendent le nœud reproductible
+> Un nœud de classification gagne à être déterministe : `temperature=0` fait que le même ticket produit toujours le même classement, et typer les champs en `Literal[...]` contraint le modèle à ne renvoyer qu'une valeur prévue — jamais une catégorie inventée.
+
+## Checkpointer et interrupt() : lire la pause depuis l'appelant
+
+> [!warning] Sans checkpointer, `interrupt()` échoue
+> Le checkpointer n'est pas un confort optionnel pour le human-in-the-loop : c'est lui qui sauvegarde l'état du graphe au moment de la pause et permet de la reprendre. Compiler le graphe sans `checkpointer=` fait échouer tout appel à `interrupt()`.
+
+Côté appelant, l'invocation se déroule en deux temps. Le premier `invoke()` exécute le graphe jusqu'à `interrupt()`, puis s'arrête — son résultat contient la clé `__interrupt__` avec la charge utile transmise à `interrupt()`, de quoi présenter la décision à un opérateur avant de reprendre :
+
+```python
+sortie = graphe.invoke({"ticket": "..."}, config)
+
+if "__interrupt__" in sortie:
+    demande = sortie["__interrupt__"][0].value
+    print("Validation requise :", demande["question"])
+    # L'opérateur décide, puis on reprend l'exécution :
+    sortie = graphe.invoke(Command(resume=True), config)
+```
+
+Le second `invoke()` ne repart pas du début : il reprend là où le graphe s'était arrêté, grâce au même `thread_id`. La valeur portée par `Command(resume=...)` devient la valeur de retour de l'appel `interrupt()` dans le nœud — le nœud se ré-exécute alors en entier avec cette valeur disponible.
+
+## Tester un graphe LangGraph : ce qui est déterministe et ce qui ne l'est pas
+
+Comme pour tout agent (voir [[Agents — Pièges classiques]], Piège 8), une fonction de routage et une règle de sécurité se testent sans modèle — elles ne font que lire l'état et décider. Seul un scénario de bout en bout (un ticket réel déclenche bien, ou ne déclenche pas, une pause) justifie un test d'intégration contre le vrai LLM.
+
+## Dépannage
+
+| Symptôme | Cause probable | Solution |
+|---|---|---|
+| `interrupt()` ne met pas le graphe en pause | Graphe compilé sans checkpointer | Passer `checkpointer=` à `compile()` |
+| `Command(resume=...)` repart du début | `thread_id` différent entre les deux `invoke()` | Réutiliser le même `thread_id` dans la config |
+| `KeyError` sur une clé d'état | Nœud qui lit une clé non encore remplie par un nœud précédent | Vérifier l'ordre des nœuds ; utiliser `state.get(...)` |
+| Le modèle renvoie une action hors liste prévue | Sortie non contrainte | Typer le champ en `Literal[...]` et `with_structured_output` |
+| `add_conditional_edges` n'atteint jamais un nœud | La fonction de routage ne renvoie pas son nom exact | Faire renvoyer une chaîne identique au nom passé à `add_node` |

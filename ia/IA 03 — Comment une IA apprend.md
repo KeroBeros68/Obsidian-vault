@@ -37,6 +37,9 @@ Prédiction → Comparaison avec la réalité → Calcul de l'erreur
 > [!info] Les paramètres
 > GPT-3 a 175 milliards de paramètres. Claude et GPT-4 en ont plusieurs centaines de milliards. Ce sont ces valeurs numériques qui "contiennent" le savoir du modèle.
 
+> [!tip] Les capacités émergentes
+> Au-delà d'une certaine taille, un modèle acquiert parfois des compétences que personne n'a explicitement programmées ni même anticipées (raisonnement en plusieurs étapes, traduction sans exemples dédiés...). Ces "capacités émergentes" apparaissent avec l'échelle (données + paramètres + calcul), pas avec une nouvelle technique d'entraînement — un modèle plus petit peut simplement ne pas les manifester du tout.
+
 ### Étape 3 — Évaluation
 
 On teste le modèle sur des données qu'il n'a **jamais vues** pour mesurer ses vraies performances.
@@ -67,3 +70,14 @@ Réponse affichée progressivement
 
 > [!warning] Pas de mémoire entre sessions
 > Par défaut, chaque nouvelle conversation repart de zéro. Le modèle ne "sait" pas que tu lui as parlé hier. Seul ce qui est dans la conversation en cours est accessible.
+
+## Pourquoi les hallucinations : trois causes, pas un bug isolé
+
+La prédiction token par token explique aussi pourquoi les hallucinations ne sont pas un simple "bug" à corriger, mais une conséquence directe du mécanisme :
+
+- **Absence de source** : le modèle n'a pas accès à des données récentes ou internes — il ne peut prédire qu'à partir de ce qu'il a appris à l'entraînement (voir [[RAG 01 — Qu'est-ce que le RAG]] pour la solution : ancrer la génération sur de vraies sources).
+- **Pression à répondre** : le modèle génère toujours un token suivant, même sans certitude — il n'a pas de mécanisme natif pour dire "je ne sais pas" plutôt que de produire la suite statistiquement plausible.
+- **Contexte insuffisant ou ambigu** : un prompt qui ne cadre pas assez la réponse laisse trop de latitude à la prédiction, qui comble les blancs de façon plausible mais pas nécessairement vraie.
+
+> [!tip] Le structured output limite aussi les hallucinations de format
+> Contraindre la sortie à un schéma précis (JSON, énumération de valeurs autorisées) réduit un autre type d'erreur — un format inventé ou incohérent — complémentaire à l'ancrage par RAG pour les erreurs factuelles. Voir [[CD — Index des fiches]].

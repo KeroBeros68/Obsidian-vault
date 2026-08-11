@@ -60,7 +60,10 @@ Re-ranker analyse et reclasse  : [chunk C, chunk A, chunk E, chunk B, chunk D]
 On garde seulement les top 3   : [chunk C, chunk A, chunk E]
 ```
 
-Modèles de re-ranking populaires : `cross-encoder/ms-marco-MiniLM`, Cohere Rerank.
+Modèles de re-ranking populaires : `cross-encoder/ms-marco-MiniLM`, `bge-reranker-v2-m3`, Cohere Rerank.
+
+> [!info] Pourquoi ça marche, et comment l'implémenter
+> Le re-ranking repose sur un **cross-encoder**, structurellement différent du bi-encoder utilisé pour la recherche — voir [[RAG 10 — Re-ranking avec un cross-encoder]] pour la distinction, l'implémentation complète et le critère pour décider si le coût en latence se justifie.
 
 ### Compression
 Supprime les parties non pertinentes dans les chunks récupérés avant de les envoyer au LLM. Réduit le bruit et les coûts.
