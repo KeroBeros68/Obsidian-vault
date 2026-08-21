@@ -32,5 +32,10 @@
 | **Mem0** | Bibliothèque dédiée à la mémoire long terme d'un agent : extrait les faits d'une conversation, les vectorise et les range dans une base vectorielle — une brique à brancher sur n'importe quel framework d'agent. |
 | **Letta (MemGPT)** | Framework d'agents construit autour de la mémoire, avec une gestion hiérarchique inspirée d'un système d'exploitation — l'agent décide lui-même ce qu'il garde en contexte et ce qu'il archive. |
 | **`user_id` (mémoire)** | Clé de filtrage systématique des opérations `add`/`search` d'une mémoire long terme, garantissant que la mémoire d'un utilisateur ne se mélange jamais à celle d'un autre. |
+| **Bac à sable (sandbox)** | Environnement isolé dans lequel exécuter du code potentiellement hostile — ici, du code généré par un LLM — de sorte qu'il ne puisse atteindre ni le système hôte ni le réseau, même s'il est malveillant. |
+| **Spectre de l'isolation** | Gradient de solutions de confinement, de l'interpréteur restreint (léger, même processus) au conteneur durci, à gVisor, puis à la microVM — plus l'isolation est forte, plus le coût et la latence montent. |
+| **gVisor** | Noyau applicatif intercalé entre un conteneur et le noyau réel de l'hôte : les appels système du code confiné sont interceptés et traités par gVisor, jamais directement par l'hôte. |
+| **microVM (Firecracker)** | Machine virtuelle légère avec son propre noyau, démarrée en quelques dizaines de millisecondes — l'isolation la plus forte, utilisée par les services d'exécution de code gérés (E2B, Daytona). |
+| **`executor_type` (smolagents)** | Paramètre du `CodeAgent` de smolagents désignant où exécuter le code généré : interpréteur local, ou bac à sable (`docker`, `e2b`, `modal`). |
 | **Trace** | Enregistrement complet de toutes les étapes d'exécution d'un agent : prompts, outils appelés, résultats, latences. |
 | **LangSmith** | Outil de traçabilité et débogage de LangChain pour observer et analyser l'exécution des agents. |

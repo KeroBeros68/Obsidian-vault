@@ -19,6 +19,7 @@
 - [[Agents 07 — LangChain et LangGraph]]
 - [[Agents 08 — CrewAI]]
 - [[Agents 09 — AutoGen]]
+- [[Agents 10 — Sandboxing du code généré par un LLM]]
 
 ### Référence
 
@@ -34,4 +35,5 @@
 - [[Fine-tuning — Index des fiches]] ← suite logique
 - [[IA — Home]] ← retour module IA
 - [[PydanticAI — Index des fiches]] ← suite : framework à sortie typée, injection de dépendances et retries automatiques
+- [[Docker — Index des fiches]] ← prérequis pour [[Agents 10 — Sandboxing du code généré par un LLM]] : sécurité des conteneurs (capabilities, non-root, seccomp)
 - [[Manques]] → smolagents et OpenAI Agents SDK (frameworks d'agents cités dans le panorama 2026 de la source, voir tableau dans [[Agents 07 — LangChain et LangGraph]]) et Chainlit (interface de chat pour exposer un agent) — non encore couverts dans ce vault

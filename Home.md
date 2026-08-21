@@ -29,6 +29,10 @@
 
 - [[Linux — Home]] ← en construction, alimenté au fil des sources
 
+## Développement transverse
+
+- [[Regex — Index des fiches]] ← expressions régulières (syntaxe, Bash, Python) — compétence multi-langages
+
 ---
 
 ## Parcours transversaux

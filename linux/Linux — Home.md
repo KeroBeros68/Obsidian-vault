@@ -15,7 +15,7 @@
 - [[Linux — Paquets & Réseau — Index des fiches]] ← apt/dnf/apk, mises à jour, bases réseau, systemd (intro), journalctl, dépannage élémentaire
 
 ### Exploitation avancée (`linux/exploitation/`)
-- [[Linux — Édition & Texte avancé — Index des fiches]] ← Vim, sed/awk avancé, regex, cut/tr/sort/uniq/diff, strace
+- [[Linux — Édition & Texte avancé — Index des fiches]] ← Vim, sed/awk avancé, cut/tr/sort/uniq/diff, strace *(regex déjà couvert dans [[Regex — Index des fiches]])*
 - [[Linux — Transfert & Archivage — Index des fiches]] ← tar avancé, curl/wget, scp/sftp, rsync, checksums
 - [[SSH — Index des fiches]] ← clés, config client/serveur, sshd_config, exécution distante, tunnels (-L/-R/-D)
 - [[Linux — Processus & Sessions avancées — Index des fiches]] ← ps/top/htop, nice, jobs bg/fg, nohup

@@ -241,3 +241,6 @@ Un durcissement trop agressif se traduit souvent par ces symptômes plutôt que 
 | Conteneur tué de façon répétée (exit 137) | Limite `--memory` trop basse pour l'application | Augmenter la limite ou optimiser la consommation — voir [[Docker 02 — Cycle de vie & debugging]] |
 | Échec de bind sur un port | Mode rootless + port < 1024 | Utiliser un port > 1024, ou une capacité adaptée — voir [[Docker 11 — Sous le capot (namespaces, cgroups, seccomp)]] |
 | `Volume permission denied` | User namespace actif (`userns-remap`) | Ajuster les UID/GID du volume, ou `--userns=host` si le conteneur doit accéder à des fichiers existants avec leur propriétaire d'origine |
+
+> [!info] Application concrète : confiner du code généré par un LLM
+> Ces options combinées (`--network none`, `--cap-drop ALL`, `--read-only`, `--user` non-root) forment la base d'un bac à sable pour exécuter du code potentiellement hostile — c'est exactement le cas d'un agent IA qui exécute du code écrit par un modèle. Voir [[Agents 10 — Sandboxing du code généré par un LLM]] pour cette application, avec un conteneur jetable et un délai appliqué côté client.

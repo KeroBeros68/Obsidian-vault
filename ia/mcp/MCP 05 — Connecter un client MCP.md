@@ -142,6 +142,45 @@ async def agent_avec_mcp():
 asyncio.run(agent_avec_mcp())
 ```
 
+### Connecter plusieurs serveurs avec MultiServerMCPClient
+
+L'imbrication `async with stdio_client(...) / async with ClientSession(...)` de l'option 3 devient vite lourde dès qu'on connecte plusieurs serveurs à la fois — il faudrait répéter ce bloc pour chacun. `langchain-mcp-adapters` fournit une classe plus haut niveau, `MultiServerMCPClient`, qui prend une configuration listant tous les serveurs d'un coup et agrège leurs outils en un seul appel.
+
+```python
+import os, sys
+from langchain_mcp_adapters.client import MultiServerMCPClient
+from langchain_ollama import ChatOllama
+from langgraph.prebuilt import create_react_agent
+
+MODELE = ChatOllama(model="qwen2.5", base_url="http://localhost:11434", temperature=0)
+ICI = os.path.dirname(os.path.abspath(__file__))
+
+CONFIG_SERVEURS = {
+    "calcul": {
+        "command": sys.executable,
+        "args": [os.path.join(ICI, "serveur_calcul.py")],
+        "transport": "stdio",
+    },
+    "texte": {
+        "command": sys.executable,
+        "args": [os.path.join(ICI, "serveur_texte.py")],
+        "transport": "stdio",
+    },
+}
+
+async def construire_agent():
+    """Connecte les serveurs MCP, charge leurs outils, crée l'agent."""
+    client = MultiServerMCPClient(CONFIG_SERVEURS)
+    outils = await client.get_tools()
+    return create_react_agent(MODELE, outils)
+```
+
+> [!tip] `sys.executable` plutôt que `"python"`
+> Utiliser `sys.executable` comme commande garantit que chaque serveur MCP tourne avec le même interpréteur Python que l'agent — donc avec le paquet `mcp` effectivement disponible. Avec un simple `"python"`, le sous-processus peut résoudre un interpréteur différent (un autre environnement virtuel, une autre version) et échouer à démarrer. Un serveur distant se déclare de la même façon, avec une `url` et `"transport": "http"` plutôt que `command`/`args`.
+
+> [!info] `create_react_agent` ne distingue pas un outil MCP d'un outil Python local
+> `get_tools()` a déjà traduit les outils MCP en outils LangChain ordinaires — pour l'agent, un outil est un outil, sa provenance par le protocole est invisible. C'est exactement la promesse d'un standard : le framework consomme un contrat, pas une implémentation.
+
 ---
 
 ## Option 4 — Serveur HTTP/SSE (client distant)

@@ -25,3 +25,5 @@
 | **Least privilege (MCP)** | Principe de sécurité : ne connecter que les serveurs MCP dont l'agent a réellement besoin, avec les permissions minimales. |
 | **Patch management (MCP)** | Suivi et mise à jour réguliers des serveurs MCP installés — même un serveur officiel peut recevoir un correctif de sécurité après la découverte d'une CVE. |
 | **Egress contrôlé** | Restriction des appels réseau sortants qu'un serveur MCP peut effectuer, pour limiter l'impact d'une faille encore inconnue au moment de l'installation. |
+| **MultiServerMCPClient** | Classe de `langchain-mcp-adapters` qui connecte plusieurs serveurs MCP à partir d'une configuration unique et agrège leurs outils via `get_tools()`, sans imbriquer un bloc `async with` par serveur. |
+| **Agent-à-agent (A2A)** | Architecture où un agent est lui-même exposé comme serveur MCP — un autre agent l'appelle comme un simple outil, sans connaître sa mécanique interne. MCP devient la langue commune entre agents, pas seulement entre un agent et ses outils. |

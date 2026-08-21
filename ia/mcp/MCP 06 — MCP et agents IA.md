@@ -152,3 +152,34 @@ Calendrier      : Google Calendar MCP
 
 > [!info] L'avenir : agents MCP natifs
 > Anthropic développe des agents qui utilisent MCP nativement dès le départ, sans framework intermédiaire. Le protocole devient la colonne vertébrale de l'écosystème agent.
+
+## MCP dans les autres frameworks d'agents
+
+Le schéma est partout le même — un client MCP, une liste de serveurs, des outils découverts à l'exécution — c'est précisément la promesse d'un standard : l'outil ne dépend pas du framework qui le consomme.
+
+| Framework | Comment il consomme MCP |
+|---|---|
+| LangChain / LangGraph | `MultiServerMCPClient` (voir [[MCP 05 — Connecter un client MCP]]) traduit les outils MCP en outils LangChain ordinaires |
+| PydanticAI | Intègre le MCP nativement : on déclare des serveurs MCP à la création de l'`Agent`, leurs outils rejoignent ceux de l'agent (voir [[PydanticAI — Index des fiches]]) |
+| smolagents | Une `ToolCollection` charge les outils d'un serveur MCP, passée ensuite à un `CodeAgent` ou un `ToolCallingAgent` (voir [[Manques]]) |
+
+## Exposer un agent comme serveur MCP (agent-à-agent)
+
+Jusqu'ici, l'agent est **client** de serveurs MCP. Le rôle peut s'inverser : exposer un agent lui-même comme **serveur** MCP.
+
+Un agent capable, par exemple, de synthétiser des notes de version peut être empaqueté en serveur MCP : il expose un outil `synthetiser_releases`, et un autre agent peut l'appeler sans rien savoir de sa mécanique interne. L'agent appelant voit un outil ; derrière cet outil se cache un agent complet.
+
+> [!info] Le principe des architectures agent-à-agent
+> Des agents qui se composent, chacun exposant ses capacités par le même protocole que de simples outils — MCP devient alors la langue commune non seulement entre un agent et ses outils, mais entre agents eux-mêmes. Concrètement, on enveloppe l'appel à l'agent dans une fonction décorée par `@mcp.tool()`, exactement comme n'importe quel serveur MCP (voir [[MCP 04 — Créer un serveur MCP]]) — la logique interne est un run d'agent complet plutôt qu'un simple calcul.
+
+C'est une architecture multi-agents supplémentaire à ajouter à celles de [[Agents 06 — Multi-agents]] : plutôt qu'un superviseur qui appelle directement des fonctions Python représentant chaque agent, chaque agent est un serveur MCP indépendant, appelable par n'importe quel autre agent client — pas seulement par un orchestrateur qui les connaît d'avance.
+
+## Dépannage
+
+| Symptôme | Cause probable | Solution |
+|---|---|---|
+| Le serveur MCP ne démarre pas depuis l'agent | `command` ne trouve pas Python ou le paquet `mcp` | Utiliser `sys.executable` pour le sous-processus |
+| `get_tools()` ne renvoie rien | Mauvais chemin de serveur dans `args` | Donner un chemin absolu vers le fichier serveur |
+| L'agent ignore un outil disponible | Description d'outil trop vague côté serveur | Soigner la docstring de l'outil |
+| `RuntimeError` sur la boucle asyncio | `get_tools()` appelé hors d'un contexte async | Encapsuler l'agent dans une fonction `async def` |
+| L'agent appelle le mauvais serveur | Outils homonymes entre deux serveurs connectés | Nommer les outils distinctement entre serveurs |

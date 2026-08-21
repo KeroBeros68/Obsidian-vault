@@ -271,6 +271,9 @@ Le nombre de passes varie d'une exécution à l'autre — le fact-checker peut a
 | **LangGraph** | Graphe d'états | Très flexible, contrôle total |
 | **AgentScope** (Alibaba) | Pipeline distribué | Tolérance aux pannes |
 
+> [!info] Agent-à-agent via MCP : une architecture de plus
+> Au-delà des architectures superviseur/swarm/hiérarchique vues plus haut, un agent peut aussi être exposé comme un **serveur MCP** — un autre agent l'appelle alors comme un simple outil, sans connaître sa mécanique interne. Voir [[MCP 06 — MCP et agents IA]] pour ce pattern d'architecture agent-à-agent.
+
 ## Forces et limites
 
 | ✅ Points forts | ❌ Points faibles |

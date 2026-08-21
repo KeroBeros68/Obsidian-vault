@@ -69,7 +69,7 @@ async def robust_fetch(url: str) -> str:
 
 ## MCP Client async — pattern complet
 ```python
-# → [[MCP 04 — Client Python async]]
+# → [[MCP 05 — Connecter un client MCP]]
 import asyncio
 from mcp import ClientSession
 from mcp.client.stdio import stdio_client
